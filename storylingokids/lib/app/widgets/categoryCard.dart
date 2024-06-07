@@ -90,7 +90,7 @@ class _CategoryCardState extends State<CategoryCard> {
             child: Text(
               widget.title,
               style: kHeadingTextStyle.copyWith(
-                fontSize: 90.0,
+                fontSize: 72.0,
                 letterSpacing: 4.0,
               ),
               softWrap: false,
