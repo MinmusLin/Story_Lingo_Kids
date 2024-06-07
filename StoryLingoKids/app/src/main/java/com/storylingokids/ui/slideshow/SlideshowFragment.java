@@ -1,4 +1,4 @@
-package com.example.storylingokids.ui.slideshow;
+package com.storylingokids.ui.slideshow;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,20 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.storylingokids.databinding.FragmentSlideshowBinding;
+import com.storylingokids.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
-
     private FragmentSlideshowBinding binding;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
-
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        SlideshowViewModel slideshowViewModel = new ViewModelProvider(this).get(SlideshowViewModel.class);
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         final TextView textView = binding.textSlideshow;
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;

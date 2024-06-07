@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.storylingokids"
+    namespace = "com.storylingokids"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.storylingokids"
+        applicationId = "com.storylingokids"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
