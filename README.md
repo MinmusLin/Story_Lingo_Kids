@@ -17,16 +17,19 @@ StoryLingoKids：寓教于乐、AI智能交互、引领幼儿英语启蒙教育�
 
 | 姓名 | 学号 | 分工 | 工作量 |
 | :---: | :---: | :---: | :---: |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| 林继申 | 2250758 |  | 25% |
+| 王麒懿 | 2252090 |  | 25% |
+| 李沅衡 | 2253551 |  | 25% |
+| 张泰宇 | 2056174 |  | 25% |
 
 ```
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 ```
 
 ## 项目组成
+
+* `storylingokids`
+项目源代码
 
 * `Opening_Defense.pptx`
 开题答辩
@@ -37,4 +40,4 @@ Email: minmuslin@outlook.com
 
 ## 文档更新日期
 
-2024年6月4日
+2024年6月8日

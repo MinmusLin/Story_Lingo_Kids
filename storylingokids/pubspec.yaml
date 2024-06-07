@@ -1,0 +1,45 @@
+name: storylingokids
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  just_audio: ^0.9.38
+  google_fonts: ^6.2.1
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: CabinSketch
+      fonts:
+        - asset: assets/fonts/CabinSketch-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/CabinSketch-Regular.ttf
+    - family: AdorshoLipi
+      fonts:
+        - asset: assets/fonts/AdorshoLipi.ttf
+    - family: CharuChandan3D
+      fonts:
+        - asset: assets/fonts/CharuChandan3D-Regular.ttf
+  assets:
+    - assets/data/
+    - assets/audio/intro/
+    - assets/audio/screen_transition/
+    - assets/audio/alphabet_en/
+    - assets/audio/color/
+    - assets/audio/numeric_en/
+    - assets/audio/animals/
+    - assets/audio/birds/
+    - assets/images/
+    - assets/images/animals/
+    - assets/images/birds/
