@@ -32,14 +32,13 @@ flutter:
       fonts:
         - asset: assets/fonts/CharuChandan3D-Regular.ttf
   assets:
-    - assets/data/
-    - assets/audio/intro/
-    - assets/audio/screen_transition/
-    - assets/audio/alphabet_en/
-    - assets/audio/color/
-    - assets/audio/numeric_en/
-    - assets/audio/animals/
-    - assets/audio/birds/
+    - assets/audios/alphabets/
+    - assets/audios/animals/
+    - assets/audios/birds/
+    - assets/audios/colors/
+    - assets/audios/effects/
+    - assets/audios/numbers/
     - assets/images/
     - assets/images/animals/
+    - assets/images/background/
     - assets/images/birds/
