@@ -28,8 +28,47 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 
 ## 项目组成
 
-* `storylingokids`
+* `/storylingokids`
 项目源代码
+
+  * `/android`
+  Android 平台特定的代码和配置文件
+
+  * `/assets`
+  项目资源文件
+
+  * `/ios`
+  iOS 平台特定的代码和配置文件
+
+  * `/lib`
+  项目 Dart 代码文件
+
+  * `/linux`
+  Linux 平台特定的代码和配置文件
+
+  * `/macos`
+  macOS 平台特定的代码和配置文件
+
+  * `/web`
+  Web 平台特定的代码和配置文件
+
+  * `/windows`
+  Windows 平台特定的代码和配置文件
+
+  * `.metadata`
+  项目 Flutter 属性文件
+
+  * `analysis_options.yaml`
+  项目代码分析工具配置文件
+
+  * `pubspec.lock`
+  项目依赖配置文件
+
+  * `pubspec.yaml`
+  项目 Flutter 配置文件
+
+  * `storylingokids.iml`
+  项目结构配置文件
 
 * `Opening_Defense.pptx`
 开题答辩
