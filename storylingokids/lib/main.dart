@@ -1,6 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'app/views/startup_view.dart';
+import 'package:flutter/material.dart'
+    show
+        BuildContext,
+        Color,
+        MaterialApp,
+        StatelessWidget,
+        TextStyle,
+        TextTheme,
+        ThemeData,
+        Widget,
+        WidgetsFlutterBinding,
+        runApp;
+import 'package:flutter/services.dart'
+    show Color, DeviceOrientation, SystemChrome;
+import 'package:storylingokids/app/views/startup_view.dart' show SplashScreen;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
