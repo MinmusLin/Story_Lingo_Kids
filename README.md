@@ -43,17 +43,8 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
   * `/lib`
   项目 Dart 代码文件
 
-  * `/linux`
-  Linux 平台特定的代码和配置文件
-
-  * `/macos`
-  macOS 平台特定的代码和配置文件
-
   * `/web`
   Web 平台特定的代码和配置文件
-
-  * `/windows`
-  Windows 平台特定的代码和配置文件
 
   * `.metadata`
   项目 Flutter 属性文件
@@ -79,4 +70,4 @@ Email: minmuslin@outlook.com
 
 ## 文档更新日期
 
-2024年6月8日
+2024年6月9日
