@@ -18,7 +18,8 @@ import 'package:flutter/material.dart'
         StatefulWidget,
         Text,
         Widget;
-import 'package:storylingokids/app/constants.dart' show kSubTextStyle;
+import 'package:flutter/painting.dart'
+    show Alignment, Color, EdgeInsets, TextStyle;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
 class StoriesView extends StatefulWidget {
@@ -88,9 +89,12 @@ class _StoriesViewState extends State<StoriesView> {
                       : const EdgeInsets.only(bottom: 20, right: 20),
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text(
+                    child: const Text(
                       'Coming soon...',
-                      style: kSubTextStyle.copyWith(fontSize: 24),
+                      style: TextStyle(
+                        color: Color(0xFF959595),
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                 );

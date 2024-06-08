@@ -34,7 +34,6 @@ import 'package:flutter/material.dart'
 import 'package:flutter/services.dart'
     show Color, FontWeight, HapticFeedback, Size, VoidCallback;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
-import 'package:storylingokids/app/constants.dart' show kHeadingTextStyle;
 
 class ViewHeader extends StatefulWidget {
   final String title;
@@ -125,7 +124,12 @@ class _ViewHeaderState extends State<ViewHeader> {
                       top: 30 - widget.offset / 4,
                       child: Text(
                         widget.title,
-                        style: kHeadingTextStyle,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 64,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 4.0,
+                        ),
                       ),
                     ),
                   ],

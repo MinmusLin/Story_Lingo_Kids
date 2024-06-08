@@ -3,6 +3,7 @@ import 'package:flutter/material.dart'
         BouncingScrollPhysics,
         BuildContext,
         Color,
+        Colors,
         CustomScrollView,
         EdgeInsets,
         Padding,
@@ -17,7 +18,6 @@ import 'package:flutter/material.dart'
         Widget,
         debugPrint;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
-import 'package:storylingokids/app/constants.dart' show getIndexColor;
 import 'package:storylingokids/app/lists/numbers_list.dart' show numbersList;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 import 'package:storylingokids/app/widgets/tile_card.dart' show TileCard;
@@ -111,4 +111,8 @@ class _NumbersViewState extends State<NumbersView> {
       ),
     );
   }
+}
+
+Color getIndexColor(int index, {double opacity = 0.8}) {
+  return Colors.primaries[index % Colors.primaries.length].withOpacity(opacity);
 }

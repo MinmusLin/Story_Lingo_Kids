@@ -41,9 +41,21 @@ import 'package:flutter/material.dart'
         Text,
         Widget,
         debugPrint;
+import 'package:flutter/painting.dart'
+    show
+        Alignment,
+        BorderRadius,
+        BoxDecoration,
+        BoxShadow,
+        Clip,
+        Color,
+        EdgeInsets,
+        FontWeight,
+        LinearGradient,
+        Offset,
+        TextStyle;
 import 'package:flutter/services.dart' show Color, HapticFeedback, Offset;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
-import 'package:storylingokids/app/constants.dart' show kHeadingTextStyle;
 
 class CategoryCard extends StatefulWidget {
   final String title;
@@ -130,8 +142,10 @@ class _CategoryCardState extends State<CategoryCard> {
             ),
             child: Text(
               widget.title,
-              style: kHeadingTextStyle.copyWith(
-                fontSize: 72.0,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 72,
+                fontWeight: FontWeight.w700,
                 letterSpacing: 4.0,
               ),
               softWrap: false,
