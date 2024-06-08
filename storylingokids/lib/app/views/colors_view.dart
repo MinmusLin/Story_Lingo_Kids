@@ -104,7 +104,7 @@ class _ColorsViewState extends State<ColorsView> {
                         ? const Color(0xFF303030)
                         : Colors.white,
                     backgroundColor: Color(int.parse(colorsList[index].code)),
-                    fontSizeBase: 40,
+                    fontSizeBase: 35,
                     fontSizeActive: 40,
                     onTap: () => _playAudio(colorsList[index].audio),
                   ),
