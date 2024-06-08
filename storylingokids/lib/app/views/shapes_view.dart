@@ -9,11 +9,9 @@
 
 import 'package:flutter/material.dart'
     show
-        Alignment,
         BouncingScrollPhysics,
         BuildContext,
         Color,
-        Container,
         CustomScrollView,
         EdgeInsets,
         Padding,
@@ -25,10 +23,11 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Text,
-        Widget;
-import 'package:flutter/painting.dart'
-    show Alignment, Color, EdgeInsets, TextStyle;
+        Widget,
+        debugPrint;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/lists/shapes_list.dart' show shapesList;
+import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
 class ShapesView extends StatefulWidget {
@@ -49,6 +48,7 @@ class ShapesView extends StatefulWidget {
 
 class _ShapesViewState extends State<ShapesView> {
   final _scrollController = ScrollController();
+  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -60,6 +60,7 @@ class _ShapesViewState extends State<ShapesView> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -67,6 +68,15 @@ class _ShapesViewState extends State<ShapesView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
+  }
+
+  void _playAudio(String assetPath) async {
+    try {
+      await _audioPlayer.setAsset(assetPath);
+      await _audioPlayer.play();
+    } catch (e) {
+      debugPrint('Error loading audio source: $e');
+    }
   }
 
   @override
@@ -86,25 +96,20 @@ class _ShapesViewState extends State<ShapesView> {
           ),
           SliverGrid(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
+              crossAxisCount: 2,
               crossAxisSpacing: 20.0,
             ),
             delegate: SliverChildBuilderDelegate(
-              childCount: 1,
+              childCount: shapesList.length,
               (context, index) {
                 return Padding(
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Coming soon...',
-                      style: TextStyle(
-                        color: Color(0xFF959595),
-                        fontSize: 24,
-                      ),
-                    ),
+                  child: ImageCard(
+                    title: shapesList[index].name!,
+                    image: shapesList[index].image!,
+                    onTap: () => _playAudio(shapesList[index].audio!),
                   ),
                 );
               },

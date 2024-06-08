@@ -92,21 +92,21 @@ class HomeView extends StatelessWidget {
         ),
       ),
       MenuCard(
-        title: 'Stories',
+        title: 'Shapes',
         primaryColor: Colors.blueAccent[100]!,
         secondaryColor: Colors.blue,
-        screen: StoriesView(
-          title: 'Stories',
+        screen: ShapesView(
+          title: 'Shapes',
           primaryColor: Colors.blueAccent[100]!,
           secondaryColor: Colors.blue,
         ),
       ),
       MenuCard(
-        title: 'Shapes',
+        title: 'Stories',
         primaryColor: Colors.redAccent[100]!,
         secondaryColor: Colors.red,
-        screen: ShapesView(
-          title: 'Shapes',
+        screen: StoriesView(
+          title: 'Stories',
           primaryColor: Colors.redAccent[100]!,
           secondaryColor: Colors.red,
         ),
