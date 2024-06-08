@@ -1,7 +1,7 @@
 /*
  * Project Name:  StoryLingoKids
- * File Name:     numbers_view.dart
- * File Function: 数字页面
+ * File Name:     birds_test_view.dart
+ * File Function: 鸟测试页面
  * Author:        林继申
  * Update Date:   2024-06-08
  * License:       MIT License
@@ -12,11 +12,8 @@ import 'package:flutter/material.dart'
         BouncingScrollPhysics,
         BuildContext,
         Color,
-        Colors,
         CustomScrollView,
         EdgeInsets,
-        MaterialPageRoute,
-        Navigator,
         Padding,
         Scaffold,
         ScrollController,
@@ -28,19 +25,20 @@ import 'package:flutter/material.dart'
         StatefulWidget,
         Widget,
         debugPrint;
-import 'package:just_audio/just_audio.dart' show AudioPlayer;
-import 'package:storylingokids/app/lists/numbers_list.dart' show numbersList;
-import 'package:storylingokids/app/views/numbers_test_view.dart'
-    show NumbersTestView;
-import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
-import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
+import 'package:just_audio/just_audio.dart'
+    show AudioPlayer, PlayerState, ProcessingState;
+import 'package:storylingokids/app/lists/birds_list.dart' show birdsList;
+import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
+import 'package:storylingokids/app/widgets/test_view_header.dart'
+    show TestViewHeader;
+import 'dart:async' show StreamSubscription;
 
-class NumbersView extends StatefulWidget {
+class BirdsTestView extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
 
-  const NumbersView({
+  const BirdsTestView({
     super.key,
     required this.title,
     required this.primaryColor,
@@ -48,10 +46,11 @@ class NumbersView extends StatefulWidget {
   });
 
   @override
-  State<NumbersView> createState() => _NumbersViewState();
+  State<BirdsTestView> createState() => _BirdsTestViewState();
 }
 
-class _NumbersViewState extends State<NumbersView> {
+class _BirdsTestViewState extends State<BirdsTestView> {
+  StreamSubscription<PlayerState>? _subscription;
   final _scrollController = ScrollController();
   final _audioPlayer = AudioPlayer();
   double offset = 0;
@@ -66,6 +65,7 @@ class _NumbersViewState extends State<NumbersView> {
   void dispose() {
     _scrollController.dispose();
     _audioPlayer.dispose();
+    _subscription?.cancel();
     super.dispose();
   }
 
@@ -75,10 +75,21 @@ class _NumbersViewState extends State<NumbersView> {
     });
   }
 
-  void _playAudio(String assetPath) async {
+  void _playAudio(String firstAssetPath, String secondAssetPath) async {
     try {
-      await _audioPlayer.setAsset(assetPath);
-      _audioPlayer.play();
+      await _audioPlayer.setAsset(firstAssetPath);
+      await _audioPlayer.play();
+      _subscription?.cancel();
+      _subscription = _audioPlayer.playerStateStream.listen((state) async {
+        if (state.processingState == ProcessingState.completed) {
+          await _audioPlayer.setAsset(secondAssetPath);
+          await _audioPlayer.play();
+          await _audioPlayer.playerStateStream.firstWhere(
+              (state) => state.processingState == ProcessingState.completed);
+          await _audioPlayer.stop();
+          _subscription?.cancel();
+        }
+      });
     } catch (e) {
       debugPrint('Error loading audio source: $e');
     }
@@ -92,22 +103,11 @@ class _NumbersViewState extends State<NumbersView> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
-            child: ViewHeader(
+            child: TestViewHeader(
               title: widget.title,
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
-              onTest: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => NumbersTestView(
-                            title: '${widget.title} Test',
-                            primaryColor: widget.primaryColor,
-                            secondaryColor: widget.secondaryColor,
-                          )),
-                );
-              },
             ),
           ),
           SliverGrid(
@@ -116,16 +116,17 @@ class _NumbersViewState extends State<NumbersView> {
               crossAxisSpacing: 20.0,
             ),
             delegate: SliverChildBuilderDelegate(
-              childCount: numbersList.length,
+              childCount: birdsList.length,
               (context, index) {
                 return Padding(
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: TextCard(
-                    title: numbersList[index].text,
-                    textColor: getIndexColor(index),
-                    onTap: () => _playAudio(numbersList[index].audio),
+                  child: ImageCard(
+                    title: birdsList[index].name!,
+                    image: birdsList[index].image!,
+                    onTap: () => _playAudio(
+                        birdsList[index].audio!, birdsList[index].voice!),
                   ),
                 );
               },
@@ -135,8 +136,4 @@ class _NumbersViewState extends State<NumbersView> {
       ),
     );
   }
-}
-
-Color getIndexColor(int index, {double opacity = 0.8}) {
-  return Colors.primaries[index % Colors.primaries.length].withOpacity(opacity);
 }

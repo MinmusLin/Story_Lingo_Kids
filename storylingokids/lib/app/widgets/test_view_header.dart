@@ -1,7 +1,7 @@
 /*
  * Project Name:  StoryLingoKids
- * File Name:     view_header.dart
- * File Function: 页面顶部
+ * File Name:     test_view_header.dart
+ * File Function: 测试页面顶部
  * Author:        林继申
  * Update Date:   2024-06-08
  * License:       MIT License
@@ -9,6 +9,7 @@
 
 import 'package:flutter/material.dart'
     show
+        Align,
         Alignment,
         AssetImage,
         BoxDecoration,
@@ -27,11 +28,9 @@ import 'package:flutter/material.dart'
         GestureDetector,
         InkWell,
         LinearGradient,
-        MainAxisAlignment,
         Navigator,
         Path,
         Positioned,
-        Row,
         Size,
         Stack,
         State,
@@ -45,29 +44,27 @@ import 'package:flutter/services.dart'
     show Color, FontWeight, HapticFeedback, Size, VoidCallback;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 
-class ViewHeader extends StatefulWidget {
+class TestViewHeader extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
   final double offset;
   final VoidCallback? onTap;
-  final VoidCallback? onTest;
 
-  const ViewHeader({
+  const TestViewHeader({
     super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
     required this.offset,
     this.onTap,
-    this.onTest,
   });
 
   @override
-  State<ViewHeader> createState() => _ViewHeaderState();
+  State<TestViewHeader> createState() => _TestViewHeaderState();
 }
 
-class _ViewHeaderState extends State<ViewHeader> {
+class _TestViewHeaderState extends State<TestViewHeader> {
   final _audioPlayer = AudioPlayer();
 
   @override
@@ -108,41 +105,23 @@ class _ViewHeaderState extends State<ViewHeader> {
         ),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    _popAudio();
-                    HapticFeedback.lightImpact();
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    '<<',
-                    style: TextStyle(
-                      fontSize: 42,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: GestureDetector(
+                onTap: () {
+                  _popAudio();
+                  HapticFeedback.lightImpact();
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  '<<',
+                  style: TextStyle(
+                    fontSize: 42,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _popAudio();
-                    if (widget.onTest != null) {
-                      widget.onTest!();
-                    }
-                  },
-                  child: const Text(
-                    '🎙️',
-                    style: TextStyle(
-                      fontSize: 42,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
             Expanded(
               child: InkWell(
@@ -156,7 +135,7 @@ class _ViewHeaderState extends State<ViewHeader> {
                         widget.title,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 64,
+                          fontSize: 48,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 4.0,
                         ),

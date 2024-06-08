@@ -1,7 +1,7 @@
 /*
  * Project Name:  StoryLingoKids
- * File Name:     numbers_view.dart
- * File Function: 数字页面
+ * File Name:     numbers_test_view.dart
+ * File Function: 数字测试页面
  * Author:        林继申
  * Update Date:   2024-06-08
  * License:       MIT License
@@ -15,8 +15,6 @@ import 'package:flutter/material.dart'
         Colors,
         CustomScrollView,
         EdgeInsets,
-        MaterialPageRoute,
-        Navigator,
         Padding,
         Scaffold,
         ScrollController,
@@ -30,17 +28,16 @@ import 'package:flutter/material.dart'
         debugPrint;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 import 'package:storylingokids/app/lists/numbers_list.dart' show numbersList;
-import 'package:storylingokids/app/views/numbers_test_view.dart'
-    show NumbersTestView;
-import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
+import 'package:storylingokids/app/widgets/test_view_header.dart'
+    show TestViewHeader;
 import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
 
-class NumbersView extends StatefulWidget {
+class NumbersTestView extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
 
-  const NumbersView({
+  const NumbersTestView({
     super.key,
     required this.title,
     required this.primaryColor,
@@ -48,10 +45,10 @@ class NumbersView extends StatefulWidget {
   });
 
   @override
-  State<NumbersView> createState() => _NumbersViewState();
+  State<NumbersTestView> createState() => _NumbersTestViewState();
 }
 
-class _NumbersViewState extends State<NumbersView> {
+class _NumbersTestViewState extends State<NumbersTestView> {
   final _scrollController = ScrollController();
   final _audioPlayer = AudioPlayer();
   double offset = 0;
@@ -92,22 +89,11 @@ class _NumbersViewState extends State<NumbersView> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
-            child: ViewHeader(
+            child: TestViewHeader(
               title: widget.title,
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
-              onTest: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => NumbersTestView(
-                            title: '${widget.title} Test',
-                            primaryColor: widget.primaryColor,
-                            secondaryColor: widget.secondaryColor,
-                          )),
-                );
-              },
             ),
           ),
           SliverGrid(

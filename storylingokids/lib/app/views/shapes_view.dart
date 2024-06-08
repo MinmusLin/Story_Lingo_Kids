@@ -14,6 +14,8 @@ import 'package:flutter/material.dart'
         Color,
         CustomScrollView,
         EdgeInsets,
+        MaterialPageRoute,
+        Navigator,
         Padding,
         Scaffold,
         ScrollController,
@@ -27,6 +29,8 @@ import 'package:flutter/material.dart'
         debugPrint;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 import 'package:storylingokids/app/lists/shapes_list.dart' show shapesList;
+import 'package:storylingokids/app/views/shapes_test_view.dart'
+    show ShapesTestView;
 import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
@@ -92,6 +96,17 @@ class _ShapesViewState extends State<ShapesView> {
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
+              onTest: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ShapesTestView(
+                            title: '${widget.title} Test',
+                            primaryColor: widget.primaryColor,
+                            secondaryColor: widget.secondaryColor,
+                          )),
+                );
+              },
             ),
           ),
           SliverGrid(

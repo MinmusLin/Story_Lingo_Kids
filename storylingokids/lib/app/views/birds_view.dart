@@ -14,6 +14,8 @@ import 'package:flutter/material.dart'
         Color,
         CustomScrollView,
         EdgeInsets,
+        MaterialPageRoute,
+        Navigator,
         Padding,
         Scaffold,
         ScrollController,
@@ -28,6 +30,8 @@ import 'package:flutter/material.dart'
 import 'package:just_audio/just_audio.dart'
     show AudioPlayer, PlayerState, ProcessingState;
 import 'package:storylingokids/app/lists/birds_list.dart' show birdsList;
+import 'package:storylingokids/app/views/birds_test_view.dart'
+    show BirdsTestView;
 import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 import 'dart:async' show StreamSubscription;
@@ -107,6 +111,17 @@ class _BirdsViewState extends State<BirdsView> {
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
+              onTest: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BirdsTestView(
+                            title: '${widget.title} Test',
+                            primaryColor: widget.primaryColor,
+                            secondaryColor: widget.secondaryColor,
+                          )),
+                );
+              },
             ),
           ),
           SliverGrid(

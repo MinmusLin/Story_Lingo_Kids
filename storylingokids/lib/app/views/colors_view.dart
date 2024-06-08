@@ -15,6 +15,8 @@ import 'package:flutter/material.dart'
         Colors,
         CustomScrollView,
         EdgeInsets,
+        MaterialPageRoute,
+        Navigator,
         Padding,
         Scaffold,
         ScrollController,
@@ -28,6 +30,8 @@ import 'package:flutter/material.dart'
         debugPrint;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 import 'package:storylingokids/app/lists/colors_list.dart' show colorsList;
+import 'package:storylingokids/app/views/colors_test_view.dart'
+    show ColorsTestView;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
 
@@ -93,6 +97,17 @@ class _ColorsViewState extends State<ColorsView> {
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
+              onTest: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ColorsTestView(
+                            title: '${widget.title} Test',
+                            primaryColor: widget.primaryColor,
+                            secondaryColor: widget.secondaryColor,
+                          )),
+                );
+              },
             ),
           ),
           SliverGrid(

@@ -29,7 +29,7 @@ import 'package:flutter/material.dart'
         Widget;
 import 'package:flutter/painting.dart'
     show Alignment, Color, EdgeInsets, TextStyle;
-import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
+import 'package:storylingokids/app/widgets/test_view_header.dart' show TestViewHeader;
 
 class StoriesView extends StatefulWidget {
   final String title;
@@ -77,7 +77,7 @@ class _StoriesViewState extends State<StoriesView> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
-            child: ViewHeader(
+            child: TestViewHeader(
               title: widget.title,
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,

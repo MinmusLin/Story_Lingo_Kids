@@ -42,21 +42,21 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> categories = [
       MenuCard(
-        title: 'Animals',
+        title: 'ABC',
         primaryColor: Colors.pinkAccent[100]!,
         secondaryColor: Colors.pink,
-        screen: AnimalsView(
-          title: 'Animals',
+        screen: AlphabetsView(
+          title: 'ABC',
           primaryColor: Colors.pinkAccent[100]!,
           secondaryColor: Colors.pink,
         ),
       ),
       MenuCard(
-        title: 'Birds',
+        title: '123',
         primaryColor: Colors.purpleAccent[100]!,
         secondaryColor: Colors.purple,
-        screen: BirdsView(
-          title: 'Birds',
+        screen: NumbersView(
+          title: '123',
           primaryColor: Colors.purpleAccent[100]!,
           secondaryColor: Colors.purple,
         ),
@@ -72,31 +72,31 @@ class HomeView extends StatelessWidget {
         ),
       ),
       MenuCard(
-        title: '123',
+        title: 'Shapes',
         primaryColor: Colors.greenAccent[100]!,
         secondaryColor: Colors.green,
-        screen: NumbersView(
-          title: '123',
+        screen: ShapesView(
+          title: 'Shapes',
           primaryColor: Colors.greenAccent[100]!,
           secondaryColor: Colors.green,
         ),
       ),
       MenuCard(
-        title: 'ABC',
+        title: 'Animals',
         primaryColor: Colors.cyanAccent[100]!,
         secondaryColor: Colors.cyan,
-        screen: AlphabetsView(
-          title: 'ABC',
+        screen: AnimalsView(
+          title: 'Animals',
           primaryColor: Colors.cyanAccent[100]!,
           secondaryColor: Colors.cyan,
         ),
       ),
       MenuCard(
-        title: 'Shapes',
+        title: 'Birds',
         primaryColor: Colors.blueAccent[100]!,
         secondaryColor: Colors.blue,
-        screen: ShapesView(
-          title: 'Shapes',
+        screen: BirdsView(
+          title: 'Birds',
           primaryColor: Colors.blueAccent[100]!,
           secondaryColor: Colors.blue,
         ),

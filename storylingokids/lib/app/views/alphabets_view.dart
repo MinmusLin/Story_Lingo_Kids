@@ -15,6 +15,8 @@ import 'package:flutter/material.dart'
         Colors,
         CustomScrollView,
         EdgeInsets,
+        MaterialPageRoute,
+        Navigator,
         Padding,
         Scaffold,
         ScrollController,
@@ -29,6 +31,8 @@ import 'package:flutter/material.dart'
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 import 'package:storylingokids/app/lists/alphabets_list.dart'
     show alphabetsList;
+import 'package:storylingokids/app/views/alphabets_test_view.dart'
+    show AlphabetsTestView;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
 
@@ -94,6 +98,17 @@ class _AlphabetsViewState extends State<AlphabetsView> {
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
+              onTest: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AlphabetsTestView(
+                            title: '${widget.title} Test',
+                            primaryColor: widget.primaryColor,
+                            secondaryColor: widget.secondaryColor,
+                          )),
+                );
+              },
             ),
           ),
           SliverGrid(
