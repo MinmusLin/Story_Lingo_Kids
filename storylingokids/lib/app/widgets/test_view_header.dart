@@ -135,7 +135,7 @@ class _TestViewHeaderState extends State<TestViewHeader> {
                         widget.title,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 48,
+                          fontSize: 40,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 4.0,
                         ),
