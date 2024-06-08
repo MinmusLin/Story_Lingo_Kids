@@ -1,25 +1,47 @@
-import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../widgets/viewHeader.dart';
+import 'package:flutter/material.dart'
+    show
+        BouncingScrollPhysics,
+        BuildContext,
+        Color,
+        CustomScrollView,
+        EdgeInsets,
+        Padding,
+        Scaffold,
+        ScrollController,
+        SliverChildBuilderDelegate,
+        SliverGrid,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        SliverToBoxAdapter,
+        State,
+        StatefulWidget,
+        Widget,
+        debugPrint;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/constants.dart' show getIndexColor;
+import 'package:storylingokids/app/lists/alphabets_list.dart'
+    show alphabetsList;
+import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
+import 'package:storylingokids/app/widgets/tile_card.dart' show TileCard;
 
-class ShapesView extends StatefulWidget {
+class AlphabetsView extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
 
-  const ShapesView({
-    Key? key,
+  const AlphabetsView({
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
-  }) : super(key: key);
+  });
 
   @override
-  State<ShapesView> createState() => _ShapesViewState();
+  State<AlphabetsView> createState() => _AlphabetsViewState();
 }
 
-class _ShapesViewState extends State<ShapesView> {
+class _AlphabetsViewState extends State<AlphabetsView> {
   final _scrollController = ScrollController();
+  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -31,6 +53,7 @@ class _ShapesViewState extends State<ShapesView> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -38,6 +61,15 @@ class _ShapesViewState extends State<ShapesView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
+  }
+
+  void _playAudio(String assetPath) async {
+    try {
+      await _audioPlayer.setAsset(assetPath);
+      _audioPlayer.play();
+    } catch (e) {
+      debugPrint('Error loading audio source: $e');
+    }
   }
 
   @override
@@ -57,22 +89,20 @@ class _ShapesViewState extends State<ShapesView> {
           ),
           SliverGrid(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
+              crossAxisCount: 2,
               crossAxisSpacing: 20.0,
             ),
             delegate: SliverChildBuilderDelegate(
-              childCount: 1,
+              childCount: alphabetsList.length,
               (context, index) {
                 return Padding(
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Coming soon...',
-                      style: kSubTextStyle.copyWith(fontSize: 24),
-                    ),
+                  child: TileCard(
+                    title: alphabetsList[index].text,
+                    textColor: getIndexColor(index),
+                    onTap: () => _playAudio(alphabetsList[index].audio),
                   ),
                 );
               },

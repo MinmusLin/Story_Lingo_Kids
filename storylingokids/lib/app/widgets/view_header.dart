@@ -1,7 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:just_audio/just_audio.dart';
-import '../constants.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        Alignment,
+        AssetImage,
+        BoxDecoration,
+        BoxFit,
+        BuildContext,
+        ClipPath,
+        Color,
+        Colors,
+        Column,
+        Container,
+        CustomClipper,
+        DecorationImage,
+        EdgeInsets,
+        Expanded,
+        FontWeight,
+        GestureDetector,
+        InkWell,
+        LinearGradient,
+        Navigator,
+        Path,
+        Positioned,
+        Size,
+        Stack,
+        State,
+        StatefulWidget,
+        Text,
+        TextStyle,
+        VoidCallback,
+        Widget,
+        debugPrint;
+import 'package:flutter/services.dart'
+    show Color, FontWeight, HapticFeedback, Size, VoidCallback;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/constants.dart' show kHeadingTextStyle;
 
 class ViewHeader extends StatefulWidget {
   final String title;
@@ -11,13 +44,13 @@ class ViewHeader extends StatefulWidget {
   final VoidCallback? onTap;
 
   const ViewHeader({
-    Key? key,
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
     required this.offset,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   State<ViewHeader> createState() => _ViewHeaderState();
@@ -39,7 +72,7 @@ class _ViewHeaderState extends State<ViewHeader> {
       );
       _audioPlayer.play();
     } catch (e) {
-      debugPrint("Error loading audio source: $e");
+      debugPrint('Error loading audio source: $e');
     }
   }
 
@@ -58,7 +91,7 @@ class _ViewHeaderState extends State<ViewHeader> {
             colors: [widget.primaryColor, widget.secondaryColor],
           ),
           image: const DecorationImage(
-            image: AssetImage("assets/images/background/Top.png"),
+            image: AssetImage('assets/images/background/Top.png'),
             fit: BoxFit.cover,
           ),
         ),

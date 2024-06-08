@@ -1,4 +1,5 @@
-import '../models/alphabetsModel.dart';
+import 'package:storylingokids/app/models/alphabets_model.dart'
+    show AlphabetsModel;
 
 List<AlphabetsModel> alphabetsList = [
   AlphabetsModel(text: 'A', audio: 'assets/audios/alphabets/A.mp3'),

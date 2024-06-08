@@ -1,24 +1,43 @@
-import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../widgets/viewHeader.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        BouncingScrollPhysics,
+        BuildContext,
+        Color,
+        Container,
+        CustomScrollView,
+        EdgeInsets,
+        Padding,
+        Scaffold,
+        ScrollController,
+        SliverChildBuilderDelegate,
+        SliverGrid,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        SliverToBoxAdapter,
+        State,
+        StatefulWidget,
+        Text,
+        Widget;
+import 'package:storylingokids/app/constants.dart' show kSubTextStyle;
+import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
-class StoriesView extends StatefulWidget {
+class ShapesView extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
 
-  const StoriesView({
-    Key? key,
+  const ShapesView({
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
-  }) : super(key: key);
+  });
 
   @override
-  State<StoriesView> createState() => _StoriesViewState();
+  State<ShapesView> createState() => _ShapesViewState();
 }
 
-class _StoriesViewState extends State<StoriesView> {
+class _ShapesViewState extends State<ShapesView> {
   final _scrollController = ScrollController();
   double offset = 0;
 
@@ -62,7 +81,7 @@ class _StoriesViewState extends State<StoriesView> {
             ),
             delegate: SliverChildBuilderDelegate(
               childCount: 1,
-                  (context, index) {
+              (context, index) {
                 return Padding(
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)

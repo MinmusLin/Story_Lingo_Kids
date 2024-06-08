@@ -1,4 +1,4 @@
-import '../models/numbersModel.dart';
+import 'package:storylingokids/app/models/numbers_model.dart' show NumbersModel;
 
 List<NumbersModel> numbersList = [
   NumbersModel(text: '1', audio: 'assets/audios/numbers/1.mp3'),

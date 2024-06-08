@@ -1,15 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:storylingokids/app/views/animalsView.dart';
-import 'package:storylingokids/app/views/birdsView.dart';
-import '../widgets/categoryCard.dart';
-import 'alphabetsView.dart';
-import 'colorsView.dart';
-import 'numbersView.dart';
-import 'shapesView.dart';
-import 'storiesView.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        BouncingScrollPhysics,
+        BoxDecoration,
+        BoxFit,
+        BuildContext,
+        Colors,
+        Container,
+        CustomScrollView,
+        Image,
+        MediaQuery,
+        Scaffold,
+        SliverChildListDelegate,
+        SliverList,
+        SliverToBoxAdapter,
+        StatelessWidget,
+        Widget;
+import 'package:storylingokids/app/views/animals_view.dart' show AnimalsView;
+import 'package:storylingokids/app/views/birds_view.dart' show BirdsView;
+import 'package:storylingokids/app/widgets/category_card.dart' show CategoryCard;
+import 'package:storylingokids/app/views/alphabets_view.dart'
+    show AlphabetsView;
+import 'package:storylingokids/app/views/colors_view.dart' show ColorsView;
+import 'package:storylingokids/app/views/numbers_view.dart' show NumbersView;
+import 'package:storylingokids/app/views/shapes_view.dart' show ShapesView;
+import 'package:storylingokids/app/views/stories_view.dart' show StoriesView;
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

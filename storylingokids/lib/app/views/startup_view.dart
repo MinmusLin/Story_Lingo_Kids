@@ -1,11 +1,50 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:just_audio/just_audio.dart';
-import 'homeView.dart';
-import 'dart:async';
+import 'package:flutter/material.dart'
+    show
+        AnimatedBuilder,
+        AnimatedContainer,
+        AnimatedOpacity,
+        Animation,
+        AnimationController,
+        AnimationStatus,
+        BorderRadius,
+        BoxDecoration,
+        BoxShadow,
+        BoxShape,
+        BuildContext,
+        Center,
+        Color,
+        Colors,
+        Container,
+        Curves,
+        EdgeInsets,
+        FadeTransition,
+        FontWeight,
+        Image,
+        MainAxisAlignment,
+        Navigator,
+        Padding,
+        PageRouteBuilder,
+        Row,
+        Scaffold,
+        Stack,
+        State,
+        StatefulWidget,
+        Text,
+        TextAlign,
+        TextStyle,
+        TickerProviderStateMixin,
+        Transform,
+        Tween,
+        Widget,
+        debugPrint;
+import 'package:flutter/services.dart'
+    show Color, FontWeight, HapticFeedback, TextAlign;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/views/home_view.dart' show HomeView;
+import 'dart:async' show Timer;
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -25,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen>
       _audioPlayer.setVolume(2.0);
       _audioPlayer.play();
     } catch (e) {
-      debugPrint("Error loading audio source: $e");
+      debugPrint('Error loading audio source: $e');
     }
   }
 

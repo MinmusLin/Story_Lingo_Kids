@@ -1,9 +1,27 @@
-import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-import '../lists/animalsList.dart';
-import '../widgets/imageCard.dart';
-import '../widgets/viewHeader.dart';
-import 'dart:async';
+import 'package:flutter/material.dart'
+    show
+        BouncingScrollPhysics,
+        BuildContext,
+        Color,
+        CustomScrollView,
+        EdgeInsets,
+        Padding,
+        Scaffold,
+        ScrollController,
+        SliverChildBuilderDelegate,
+        SliverGrid,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        SliverToBoxAdapter,
+        State,
+        StatefulWidget,
+        Widget,
+        debugPrint;
+import 'package:just_audio/just_audio.dart'
+    show AudioPlayer, PlayerState, ProcessingState;
+import 'package:storylingokids/app/lists/animals_list.dart' show animalsList;
+import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
+import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
+import 'dart:async' show StreamSubscription;
 
 class AnimalsView extends StatefulWidget {
   final String title;
@@ -11,11 +29,11 @@ class AnimalsView extends StatefulWidget {
   final Color secondaryColor;
 
   const AnimalsView({
-    Key? key,
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
-  }) : super(key: key);
+  });
 
   @override
   State<AnimalsView> createState() => _AnimalsViewState();
@@ -64,7 +82,7 @@ class _AnimalsViewState extends State<AnimalsView> {
         }
       });
     } catch (e) {
-      debugPrint("Error loading audio source: $e");
+      debugPrint('Error loading audio source: $e');
     }
   }
 

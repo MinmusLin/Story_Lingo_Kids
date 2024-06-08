@@ -1,4 +1,5 @@
-import 'package:storylingokids/app/models/birdsAndAnimalsModel.dart';
+import 'package:storylingokids/app/models/birds_and_animals_model.dart'
+    show BirdsAndAnimalsModel;
 
 List<BirdsAndAnimalsModel> birdsList = [
   BirdsAndAnimalsModel(
@@ -20,25 +21,25 @@ List<BirdsAndAnimalsModel> birdsList = [
     voice: 'assets/audios/birds/Bird_V3.mp3',
   ),
   BirdsAndAnimalsModel(
-    name: 'Peigon',
+    name: 'Pigeon',
     image: 'assets/images/birds/Bird_4.png',
     audio: 'assets/audios/birds/Bird_S4.mp3',
     voice: 'assets/audios/birds/Bird_V4.mp3',
   ),
   BirdsAndAnimalsModel(
-    name: 'Sparaow',
+    name: 'Sparrow',
     image: 'assets/images/birds/Bird_5.png',
     audio: 'assets/audios/birds/Bird_S5.mp3',
     voice: 'assets/audios/birds/Bird_V5.mp3',
   ),
   BirdsAndAnimalsModel(
-    name: 'Tukan',
+    name: 'Toucan',
     image: 'assets/images/birds/Bird_6.png',
     audio: 'assets/audios/birds/Bird_S6.mp3',
     voice: 'assets/audios/birds/Bird_V6.mp3',
   ),
   BirdsAndAnimalsModel(
-    name: 'Volture',
+    name: 'Vulture',
     image: 'assets/images/birds/Bird_7.png',
     audio: 'assets/audios/birds/Bird_S7.mp3',
     voice: 'assets/audios/birds/Bird_V7.mp3',

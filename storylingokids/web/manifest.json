@@ -1,6 +1,6 @@
 {
-    "name": "StoryLingoKids",
-    "short_name": "StoryLingoKids",
+    "name": "storylingokids",
+    "short_name": "storylingokids",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

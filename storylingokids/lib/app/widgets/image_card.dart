@@ -1,6 +1,34 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../constants.dart';
+import 'package:flutter/material.dart'
+    show
+        Align,
+        Alignment,
+        AnimatedDefaultTextStyle,
+        BorderRadius,
+        BoxDecoration,
+        BoxFit,
+        BoxShadow,
+        BuildContext,
+        Clip,
+        Color,
+        Colors,
+        Container,
+        Curves,
+        EdgeInsets,
+        FontWeight,
+        Image,
+        InkWell,
+        Material,
+        MaterialType,
+        Offset,
+        Padding,
+        Positioned,
+        Stack,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        VoidCallback,
+        Widget;
+import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
 
 class ImageCard extends StatelessWidget {
   final bool isActive;
@@ -13,16 +41,16 @@ class ImageCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const ImageCard({
-    Key? key,
+    super.key,
     this.isActive = false,
     required this.title,
     required this.image,
-    this.textColor = kTitleTextColor,
+    this.textColor = const Color(0xFF303030),
     this.backgroundColor = Colors.white,
     this.fontSizeBase = 20,
     this.fontSizeActive = 22,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +62,7 @@ class ImageCard extends StatelessWidget {
           BoxShadow(
             offset: const Offset(0, 10),
             blurRadius: 20,
-            color: kActiveShadowColor,
+            color: const Color(0xFF4056C6).withOpacity(.15),
           ),
         ],
       ),

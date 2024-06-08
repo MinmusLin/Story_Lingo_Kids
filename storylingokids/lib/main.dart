@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'app/constants.dart';
-import 'app/views/startupView.dart';
+import 'app/views/startup_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +12,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +20,10 @@ class MyApp extends StatelessWidget {
       title: 'StoryLingoKids',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: kBackgroundColor,
-        fontFamily: "CabinSketch",
+        scaffoldBackgroundColor: const Color(0xFFFEFEFE),
+        fontFamily: 'CabinSketch',
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: kBodyTextColor),
+          bodyLarge: TextStyle(color: Color(0xFF4B4B4B)),
         ),
       ),
       home: const SplashScreen(),

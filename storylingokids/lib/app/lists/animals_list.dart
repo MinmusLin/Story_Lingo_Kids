@@ -1,4 +1,5 @@
-import 'package:storylingokids/app/models/birdsAndAnimalsModel.dart';
+import 'package:storylingokids/app/models/birds_and_animals_model.dart'
+    show BirdsAndAnimalsModel;
 
 List<BirdsAndAnimalsModel> animalsList = [
   BirdsAndAnimalsModel(

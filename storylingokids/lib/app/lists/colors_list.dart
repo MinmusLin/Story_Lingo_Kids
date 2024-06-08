@@ -1,4 +1,4 @@
-import '../models/colorsModel.dart';
+import 'package:storylingokids/app/models/colors_model.dart' show ColorsModel;
 
 List<ColorsModel> colorsList = [
   ColorsModel(

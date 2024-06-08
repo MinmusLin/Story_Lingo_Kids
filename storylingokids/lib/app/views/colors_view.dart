@@ -1,9 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-import '../constants.dart';
-import '../lists/colorsList.dart';
-import '../widgets/viewHeader.dart';
-import '../widgets/tileCard.dart';
+import 'package:flutter/material.dart'
+    show
+        BouncingScrollPhysics,
+        BuildContext,
+        Color,
+        Colors,
+        CustomScrollView,
+        EdgeInsets,
+        Padding,
+        Scaffold,
+        ScrollController,
+        SliverChildBuilderDelegate,
+        SliverGrid,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        SliverToBoxAdapter,
+        State,
+        StatefulWidget,
+        Widget,
+        debugPrint;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/lists/colors_list.dart' show colorsList;
+import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
+import 'package:storylingokids/app/widgets/tile_card.dart' show TileCard;
 
 class ColorsView extends StatefulWidget {
   final String title;
@@ -11,11 +28,11 @@ class ColorsView extends StatefulWidget {
   final Color secondaryColor;
 
   const ColorsView({
-    Key? key,
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
-  }) : super(key: key);
+  });
 
   @override
   State<ColorsView> createState() => _ColorsViewState();
@@ -50,7 +67,7 @@ class _ColorsViewState extends State<ColorsView> {
       await _audioPlayer.setAsset(assetPath);
       _audioPlayer.play();
     } catch (e) {
-      debugPrint("Error loading audio source: $e");
+      debugPrint('Error loading audio source: $e');
     }
   }
 
@@ -84,10 +101,10 @@ class _ColorsViewState extends State<ColorsView> {
                   child: TileCard(
                     title: colorsList[index].name,
                     textColor: colorsList[index].name == 'White'
-                        ? kTitleTextColor
+                        ? const Color(0xFF303030)
                         : Colors.white,
                     backgroundColor: Color(int.parse(colorsList[index].code)),
-                    fontSizeBase: 30,
+                    fontSizeBase: 40,
                     fontSizeActive: 40,
                     onTap: () => _playAudio(colorsList[index].audio),
                   ),

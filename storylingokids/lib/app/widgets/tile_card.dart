@@ -1,5 +1,26 @@
-import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        AnimatedDefaultTextStyle,
+        BorderRadius,
+        BoxDecoration,
+        BoxShadow,
+        BuildContext,
+        Clip,
+        Color,
+        Colors,
+        Container,
+        Curves,
+        FontWeight,
+        InkWell,
+        Material,
+        MaterialType,
+        Offset,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        VoidCallback,
+        Widget;
 
 class TileCard extends StatelessWidget {
   final bool isActive;
@@ -11,15 +32,15 @@ class TileCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const TileCard({
-    Key? key,
+    super.key,
     this.isActive = false,
     required this.title,
-    this.textColor = kTitleTextColor,
+    this.textColor = const Color(0xFF303030),
     this.backgroundColor = Colors.white,
     this.fontSizeBase = 130,
     this.fontSizeActive = 180,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +52,7 @@ class TileCard extends StatelessWidget {
           BoxShadow(
             offset: const Offset(0, 10),
             blurRadius: 20,
-            color: kActiveShadowColor,
+            color: const Color(0xFF4056C6).withOpacity(.15),
           ),
         ],
       ),

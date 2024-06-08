@@ -1,8 +1,49 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:just_audio/just_audio.dart';
-import '../constants.dart';
+import 'package:flutter/cupertino.dart'
+    show
+        Alignment,
+        BorderRadius,
+        BoxDecoration,
+        BoxShadow,
+        BuildContext,
+        Clip,
+        Color,
+        Container,
+        CupertinoPageRoute,
+        EdgeInsets,
+        LinearGradient,
+        Navigator,
+        Offset,
+        State,
+        StatefulWidget,
+        Text,
+        Widget,
+        debugPrint;
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        BorderRadius,
+        BoxDecoration,
+        BoxShadow,
+        BuildContext,
+        Clip,
+        Color,
+        Colors,
+        Container,
+        EdgeInsets,
+        InkWell,
+        LinearGradient,
+        Material,
+        MaterialType,
+        Navigator,
+        Offset,
+        State,
+        StatefulWidget,
+        Text,
+        Widget,
+        debugPrint;
+import 'package:flutter/services.dart' show Color, HapticFeedback, Offset;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/constants.dart' show kHeadingTextStyle;
 
 class CategoryCard extends StatefulWidget {
   final String title;
@@ -11,12 +52,12 @@ class CategoryCard extends StatefulWidget {
   final Widget screen;
 
   const CategoryCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
     required this.screen,
-  }) : super(key: key);
+  });
 
   @override
   State<CategoryCard> createState() => _CategoryCardState();
@@ -38,7 +79,7 @@ class _CategoryCardState extends State<CategoryCard> {
       );
       _audioPlayer.play();
     } catch (e) {
-      debugPrint("Error loading audio source: $e");
+      debugPrint('Error loading audio source: $e');
     }
   }
 

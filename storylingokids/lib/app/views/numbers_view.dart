@@ -1,29 +1,44 @@
-import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:storylingokids/app/lists/animalsList.dart';
-import 'package:storylingokids/app/lists/birdsList.dart';
-import 'package:storylingokids/app/widgets/imageCard.dart';
-import 'package:storylingokids/app/widgets/viewHeader.dart';
-import 'dart:async';
+import 'package:flutter/material.dart'
+    show
+        BouncingScrollPhysics,
+        BuildContext,
+        Color,
+        CustomScrollView,
+        EdgeInsets,
+        Padding,
+        Scaffold,
+        ScrollController,
+        SliverChildBuilderDelegate,
+        SliverGrid,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        SliverToBoxAdapter,
+        State,
+        StatefulWidget,
+        Widget,
+        debugPrint;
+import 'package:just_audio/just_audio.dart' show AudioPlayer;
+import 'package:storylingokids/app/constants.dart' show getIndexColor;
+import 'package:storylingokids/app/lists/numbers_list.dart' show numbersList;
+import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
+import 'package:storylingokids/app/widgets/tile_card.dart' show TileCard;
 
-class BirdsView extends StatefulWidget {
+class NumbersView extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
 
-  const BirdsView({
-    Key? key,
+  const NumbersView({
+    super.key,
     required this.title,
     required this.primaryColor,
     required this.secondaryColor,
-  }) : super(key: key);
+  });
 
   @override
-  State<BirdsView> createState() => _BirdsViewState();
+  State<NumbersView> createState() => _NumbersViewState();
 }
 
-class _BirdsViewState extends State<BirdsView> {
-  StreamSubscription<PlayerState>? _subscription;
+class _NumbersViewState extends State<NumbersView> {
   final _scrollController = ScrollController();
   final _audioPlayer = AudioPlayer();
   double offset = 0;
@@ -38,7 +53,6 @@ class _BirdsViewState extends State<BirdsView> {
   void dispose() {
     _scrollController.dispose();
     _audioPlayer.dispose();
-    _subscription?.cancel();
     super.dispose();
   }
 
@@ -48,23 +62,12 @@ class _BirdsViewState extends State<BirdsView> {
     });
   }
 
-  void _playAudio(String firstAssetPath, String secondAssetPath) async {
+  void _playAudio(String assetPath) async {
     try {
-      await _audioPlayer.setAsset(firstAssetPath);
-      await _audioPlayer.play();
-      _subscription?.cancel();
-      _subscription = _audioPlayer.playerStateStream.listen((state) async {
-        if (state.processingState == ProcessingState.completed) {
-          await _audioPlayer.setAsset(secondAssetPath);
-          await _audioPlayer.play();
-          await _audioPlayer.playerStateStream.firstWhere(
-              (state) => state.processingState == ProcessingState.completed);
-          await _audioPlayer.stop();
-          _subscription?.cancel();
-        }
-      });
+      await _audioPlayer.setAsset(assetPath);
+      _audioPlayer.play();
     } catch (e) {
-      debugPrint("Error loading audio source: $e");
+      debugPrint('Error loading audio source: $e');
     }
   }
 
@@ -89,17 +92,16 @@ class _BirdsViewState extends State<BirdsView> {
               crossAxisSpacing: 20.0,
             ),
             delegate: SliverChildBuilderDelegate(
-              childCount: birdsList.length,
+              childCount: numbersList.length,
               (context, index) {
                 return Padding(
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: ImageCard(
-                    title: birdsList[index].name!,
-                    image: birdsList[index].image!,
-                    onTap: () => _playAudio(
-                        birdsList[index].audio!, birdsList[index].voice!),
+                  child: TileCard(
+                    title: numbersList[index].text,
+                    textColor: getIndexColor(index),
+                    onTap: () => _playAudio(numbersList[index].audio),
                   ),
                 );
               },
