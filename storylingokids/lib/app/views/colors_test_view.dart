@@ -24,13 +24,12 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Widget,
-        debugPrint;
-import 'package:just_audio/just_audio.dart' show AudioPlayer;
+        Widget;
 import 'package:storylingokids/app/lists/colors_list.dart' show colorsList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
-import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
+import 'package:storylingokids/app/widgets/test_color_card.dart'
+    show TestColorCard;
 
 class ColorsTestView extends StatefulWidget {
   final String title;
@@ -50,7 +49,6 @@ class ColorsTestView extends StatefulWidget {
 
 class _ColorsTestViewState extends State<ColorsTestView> {
   final _scrollController = ScrollController();
-  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -62,7 +60,6 @@ class _ColorsTestViewState extends State<ColorsTestView> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -70,15 +67,6 @@ class _ColorsTestViewState extends State<ColorsTestView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
-  }
-
-  void _playAudio(String assetPath) async {
-    try {
-      await _audioPlayer.setAsset(assetPath);
-      _audioPlayer.play();
-    } catch (e) {
-      debugPrint('Error loading audio source: $e');
-    }
   }
 
   @override
@@ -108,7 +96,7 @@ class _ColorsTestViewState extends State<ColorsTestView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: TextCard(
+                  child: TestColorCard(
                     title: colorsList[index].name,
                     textColor: colorsList[index].name == 'White'
                         ? const Color(0xFF303030)
@@ -116,7 +104,6 @@ class _ColorsTestViewState extends State<ColorsTestView> {
                     backgroundColor: Color(int.parse(colorsList[index].code)),
                     fontSizeBase: 35,
                     fontSizeActive: 40,
-                    onTap: () => _playAudio(colorsList[index].audio),
                   ),
                 );
               },

@@ -23,15 +23,12 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Widget,
-        debugPrint;
-import 'package:just_audio/just_audio.dart'
-    show AudioPlayer, PlayerState, ProcessingState;
+        Widget;
 import 'package:storylingokids/app/lists/animals_list.dart' show animalsList;
-import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
+import 'package:storylingokids/app/widgets/test_image_card.dart'
+    show TestImageCard;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
-import 'dart:async' show StreamSubscription;
 
 class AnimalsTestView extends StatefulWidget {
   final String title;
@@ -50,10 +47,7 @@ class AnimalsTestView extends StatefulWidget {
 }
 
 class _AnimalsTestViewState extends State<AnimalsTestView> {
-  StreamSubscription<PlayerState>? _subscription;
-
   final _scrollController = ScrollController();
-  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -65,8 +59,6 @@ class _AnimalsTestViewState extends State<AnimalsTestView> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _audioPlayer.dispose();
-    _subscription?.cancel();
     super.dispose();
   }
 
@@ -74,26 +66,6 @@ class _AnimalsTestViewState extends State<AnimalsTestView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
-  }
-
-  void _playAudio(String firstAssetPath, String secondAssetPath) async {
-    try {
-      await _audioPlayer.setAsset(firstAssetPath);
-      await _audioPlayer.play();
-      _subscription?.cancel();
-      _subscription = _audioPlayer.playerStateStream.listen((state) async {
-        if (state.processingState == ProcessingState.completed) {
-          await _audioPlayer.setAsset(secondAssetPath);
-          await _audioPlayer.play();
-          await _audioPlayer.playerStateStream.firstWhere(
-              (state) => state.processingState == ProcessingState.completed);
-          await _audioPlayer.stop();
-          _subscription?.cancel();
-        }
-      });
-    } catch (e) {
-      debugPrint('Error loading audio source: $e');
-    }
   }
 
   @override
@@ -123,11 +95,9 @@ class _AnimalsTestViewState extends State<AnimalsTestView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: ImageCard(
+                  child: TestImageCard(
                     title: animalsList[index].name!,
                     image: animalsList[index].image!,
-                    onTap: () => _playAudio(
-                        animalsList[index].audio!, animalsList[index].voice!),
                   ),
                 );
               },

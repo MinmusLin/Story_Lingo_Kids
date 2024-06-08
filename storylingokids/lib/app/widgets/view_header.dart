@@ -87,6 +87,17 @@ class _ViewHeaderState extends State<ViewHeader> {
     }
   }
 
+  void _testAudio() async {
+    try {
+      await _audioPlayer.setAsset(
+        'assets/audios/effects/Forward.wav',
+      );
+      _audioPlayer.play();
+    } catch (e) {
+      debugPrint('Error loading audio source: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -128,7 +139,7 @@ class _ViewHeaderState extends State<ViewHeader> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _popAudio();
+                    _testAudio();
                     if (widget.onTest != null) {
                       widget.onTest!();
                     }

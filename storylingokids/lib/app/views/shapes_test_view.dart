@@ -23,11 +23,10 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Widget,
-        debugPrint;
-import 'package:just_audio/just_audio.dart' show AudioPlayer;
+        Widget;
 import 'package:storylingokids/app/lists/shapes_list.dart' show shapesList;
-import 'package:storylingokids/app/widgets/image_card.dart' show ImageCard;
+import 'package:storylingokids/app/widgets/test_image_card.dart'
+    show TestImageCard;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
 
@@ -49,7 +48,6 @@ class ShapesTestView extends StatefulWidget {
 
 class _ShapesTestViewState extends State<ShapesTestView> {
   final _scrollController = ScrollController();
-  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -61,7 +59,6 @@ class _ShapesTestViewState extends State<ShapesTestView> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -69,15 +66,6 @@ class _ShapesTestViewState extends State<ShapesTestView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
-  }
-
-  void _playAudio(String assetPath) async {
-    try {
-      await _audioPlayer.setAsset(assetPath);
-      await _audioPlayer.play();
-    } catch (e) {
-      debugPrint('Error loading audio source: $e');
-    }
   }
 
   @override
@@ -107,10 +95,9 @@ class _ShapesTestViewState extends State<ShapesTestView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: ImageCard(
+                  child: TestImageCard(
                     title: shapesList[index].name!,
                     image: shapesList[index].image!,
-                    onTap: () => _playAudio(shapesList[index].audio!),
                   ),
                 );
               },

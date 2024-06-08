@@ -24,13 +24,12 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Widget,
-        debugPrint;
-import 'package:just_audio/just_audio.dart' show AudioPlayer;
+        Widget;
 import 'package:storylingokids/app/lists/numbers_list.dart' show numbersList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
-import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
+import 'package:storylingokids/app/widgets/test_text_card.dart'
+    show TestTextCard;
 
 class NumbersTestView extends StatefulWidget {
   final String title;
@@ -50,7 +49,6 @@ class NumbersTestView extends StatefulWidget {
 
 class _NumbersTestViewState extends State<NumbersTestView> {
   final _scrollController = ScrollController();
-  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -62,7 +60,6 @@ class _NumbersTestViewState extends State<NumbersTestView> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -70,15 +67,6 @@ class _NumbersTestViewState extends State<NumbersTestView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
-  }
-
-  void _playAudio(String assetPath) async {
-    try {
-      await _audioPlayer.setAsset(assetPath);
-      _audioPlayer.play();
-    } catch (e) {
-      debugPrint('Error loading audio source: $e');
-    }
   }
 
   @override
@@ -108,10 +96,9 @@ class _NumbersTestViewState extends State<NumbersTestView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: TextCard(
+                  child: TestTextCard(
                     title: numbersList[index].text,
                     textColor: getIndexColor(index),
-                    onTap: () => _playAudio(numbersList[index].audio),
                   ),
                 );
               },

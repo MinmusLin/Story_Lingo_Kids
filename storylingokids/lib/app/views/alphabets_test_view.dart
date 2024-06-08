@@ -24,14 +24,13 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Widget,
-        debugPrint;
-import 'package:just_audio/just_audio.dart' show AudioPlayer;
+        Widget;
 import 'package:storylingokids/app/lists/alphabets_list.dart'
     show alphabetsList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
-import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
+import 'package:storylingokids/app/widgets/test_text_card.dart'
+    show TestTextCard;
 
 class AlphabetsTestView extends StatefulWidget {
   final String title;
@@ -51,7 +50,6 @@ class AlphabetsTestView extends StatefulWidget {
 
 class _AlphabetsTestViewState extends State<AlphabetsTestView> {
   final _scrollController = ScrollController();
-  final _audioPlayer = AudioPlayer();
   double offset = 0;
 
   @override
@@ -63,7 +61,6 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -71,15 +68,6 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
-  }
-
-  void _playAudio(String assetPath) async {
-    try {
-      await _audioPlayer.setAsset(assetPath);
-      _audioPlayer.play();
-    } catch (e) {
-      debugPrint('Error loading audio source: $e');
-    }
   }
 
   @override
@@ -109,10 +97,9 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: TextCard(
+                  child: TestTextCard(
                     title: alphabetsList[index].text,
                     textColor: getIndexColor(index),
-                    onTap: () => _playAudio(alphabetsList[index].audio),
                   ),
                 );
               },
