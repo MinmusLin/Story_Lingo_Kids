@@ -9,8 +9,6 @@
 
 import 'package:flutter/material.dart'
     show
-        Alignment,
-        AnimatedDefaultTextStyle,
         BorderRadius,
         BoxDecoration,
         BoxShadow,
@@ -19,32 +17,22 @@ import 'package:flutter/material.dart'
         Color,
         Colors,
         Container,
-        Curves,
-        InkWell,
         Material,
         MaterialType,
         Offset,
         StatelessWidget,
-        Text,
-        TextStyle,
         Widget;
 
 class TestColorCard extends StatelessWidget {
-  final bool isActive;
   final String title;
   final Color textColor;
   final Color backgroundColor;
-  final double fontSizeBase;
-  final double fontSizeActive;
 
   const TestColorCard({
     super.key,
-    this.isActive = false,
     required this.title,
     this.textColor = const Color(0xFF303030),
     this.backgroundColor = Colors.white,
-    this.fontSizeBase = 130,
-    this.fontSizeActive = 180,
   });
 
   @override
@@ -65,19 +53,6 @@ class TestColorCard extends StatelessWidget {
         clipBehavior: Clip.hardEdge,
         borderRadius: BorderRadius.circular(15.0),
         type: MaterialType.transparency,
-        child: InkWell(
-          child: Container(
-            alignment: Alignment.center,
-            child: AnimatedDefaultTextStyle(
-              style: isActive
-                  ? TextStyle(fontSize: fontSizeActive)
-                  : TextStyle(fontSize: fontSizeBase),
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.bounceOut,
-              child: const Text(''),
-            ),
-          ),
-        ),
       ),
     );
   }

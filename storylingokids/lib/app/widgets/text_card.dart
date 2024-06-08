@@ -32,22 +32,18 @@ import 'package:flutter/material.dart'
         Widget;
 
 class TextCard extends StatelessWidget {
-  final bool isActive;
   final String title;
   final Color textColor;
   final Color backgroundColor;
-  final double fontSizeBase;
-  final double fontSizeActive;
+  final double fontSize;
   final VoidCallback onTap;
 
   const TextCard({
     super.key,
-    this.isActive = false,
     required this.title,
     this.textColor = const Color(0xFF303030),
     this.backgroundColor = Colors.white,
-    this.fontSizeBase = 130,
-    this.fontSizeActive = 180,
+    this.fontSize = 130,
     required this.onTap,
   });
 
@@ -74,9 +70,7 @@ class TextCard extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             child: AnimatedDefaultTextStyle(
-              style: isActive
-                  ? TextStyle(fontSize: fontSizeActive)
-                  : TextStyle(fontSize: fontSizeBase),
+              style: TextStyle(fontSize: fontSize),
               duration: const Duration(milliseconds: 400),
               curve: Curves.bounceOut,
               child: Text(

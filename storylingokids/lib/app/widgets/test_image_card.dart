@@ -32,23 +32,19 @@ import 'package:flutter/material.dart'
         Widget;
 
 class TestImageCard extends StatelessWidget {
-  final bool isActive;
   final String title;
   final String image;
   final Color textColor;
   final Color backgroundColor;
-  final double fontSizeBase;
-  final double fontSizeActive;
+  final double fontSize;
 
   const TestImageCard({
     super.key,
-    this.isActive = false,
     required this.title,
     required this.image,
     this.textColor = const Color(0xFF303030),
     this.backgroundColor = Colors.white,
-    this.fontSizeBase = 20,
-    this.fontSizeActive = 22,
+    this.fontSize = 20,
   });
 
   @override
@@ -75,9 +71,7 @@ class TestImageCard extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 child: AnimatedDefaultTextStyle(
-                  style: isActive
-                      ? TextStyle(fontSize: fontSizeActive)
-                      : TextStyle(fontSize: fontSizeBase),
+                  style: TextStyle(fontSize: fontSize),
                   duration: const Duration(milliseconds: 400),
                   curve: Curves.bounceOut,
                   child: Image.asset(

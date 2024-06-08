@@ -102,8 +102,6 @@ class _ColorsTestViewState extends State<ColorsTestView> {
                         ? const Color(0xFF303030)
                         : Colors.white,
                     backgroundColor: Color(int.parse(colorsList[index].code)),
-                    fontSizeBase: 35,
-                    fontSizeActive: 40,
                   ),
                 );
               },
