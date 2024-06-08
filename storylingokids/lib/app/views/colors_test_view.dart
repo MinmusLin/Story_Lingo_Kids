@@ -3,7 +3,7 @@
  * File Name:     colors_test_view.dart
  * File Function: 颜色测试页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -102,6 +102,12 @@ class _ColorsTestViewState extends State<ColorsTestView> {
                         ? const Color(0xFF303030)
                         : Colors.white,
                     backgroundColor: Color(int.parse(colorsList[index].code)),
+                    onPressed: () {
+                      print("start");
+                    },
+                    onReleased: () {
+                      print("end");
+                    },
                   ),
                 );
               },

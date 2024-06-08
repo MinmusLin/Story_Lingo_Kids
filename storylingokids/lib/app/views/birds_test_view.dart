@@ -3,7 +3,7 @@
  * File Name:     birds_test_view.dart
  * File Function: 鸟测试页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -98,6 +98,12 @@ class _BirdsTestViewState extends State<BirdsTestView> {
                   child: TestImageCard(
                     title: birdsList[index].name!,
                     image: birdsList[index].image!,
+                    onPressed: () {
+                      print("start");
+                    },
+                    onReleased: () {
+                      print("end");
+                    },
                   ),
                 );
               },

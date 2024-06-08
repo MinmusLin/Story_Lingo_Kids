@@ -3,7 +3,7 @@
  * File Name:     animals_test_view.dart
  * File Function: 动物测试页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -98,6 +98,12 @@ class _AnimalsTestViewState extends State<AnimalsTestView> {
                   child: TestImageCard(
                     title: animalsList[index].name!,
                     image: animalsList[index].image!,
+                    onPressed: () {
+                      print("start");
+                    },
+                    onReleased: () {
+                      print("end");
+                    },
                   ),
                 );
               },

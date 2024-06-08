@@ -3,7 +3,7 @@
  * File Name:     numbers_test_view.dart
  * File Function: 数字测试页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -98,7 +98,14 @@ class _NumbersTestViewState extends State<NumbersTestView> {
                       : const EdgeInsets.only(bottom: 20, right: 20),
                   child: TestTextCard(
                     title: numbersList[index].text,
-                    textColor: getIndexColor(index),
+                    textColor: Colors.primaries[index % Colors.primaries.length]
+                        .withOpacity(0.8),
+                    onPressed: () {
+                      print("start");
+                    },
+                    onReleased: () {
+                      print("end");
+                    },
                   ),
                 );
               },
@@ -108,8 +115,4 @@ class _NumbersTestViewState extends State<NumbersTestView> {
       ),
     );
   }
-}
-
-Color getIndexColor(int index, {double opacity = 0.8}) {
-  return Colors.primaries[index % Colors.primaries.length].withOpacity(opacity);
 }

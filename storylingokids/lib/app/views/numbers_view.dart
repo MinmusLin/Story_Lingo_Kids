@@ -3,7 +3,7 @@
  * File Name:     numbers_view.dart
  * File Function: 数字页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -124,7 +124,8 @@ class _NumbersViewState extends State<NumbersView> {
                       : const EdgeInsets.only(bottom: 20, right: 20),
                   child: TextCard(
                     title: numbersList[index].text,
-                    textColor: getIndexColor(index),
+                    textColor: Colors.primaries[index % Colors.primaries.length]
+                        .withOpacity(0.8),
                     onTap: () => _playAudio(numbersList[index].audio),
                   ),
                 );
@@ -135,8 +136,4 @@ class _NumbersViewState extends State<NumbersView> {
       ),
     );
   }
-}
-
-Color getIndexColor(int index, {double opacity = 0.8}) {
-  return Colors.primaries[index % Colors.primaries.length].withOpacity(opacity);
 }

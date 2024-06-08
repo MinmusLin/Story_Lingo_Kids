@@ -3,7 +3,7 @@
  * File Name:     shapes_test_view.dart
  * File Function: 形状测试页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -98,6 +98,12 @@ class _ShapesTestViewState extends State<ShapesTestView> {
                   child: TestImageCard(
                     title: shapesList[index].name!,
                     image: shapesList[index].image!,
+                    onPressed: () {
+                      print("start");
+                    },
+                    onReleased: () {
+                      print("end");
+                    },
                   ),
                 );
               },
