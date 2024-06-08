@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     text_card.dart
+ * File Function: 文本卡片
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:flutter/material.dart'
     show
         Alignment,
@@ -22,7 +31,7 @@ import 'package:flutter/material.dart'
         VoidCallback,
         Widget;
 
-class TileCard extends StatelessWidget {
+class TextCard extends StatelessWidget {
   final bool isActive;
   final String title;
   final Color textColor;
@@ -31,7 +40,7 @@ class TileCard extends StatelessWidget {
   final double fontSizeActive;
   final VoidCallback onTap;
 
-  const TileCard({
+  const TextCard({
     super.key,
     this.isActive = false,
     required this.title,

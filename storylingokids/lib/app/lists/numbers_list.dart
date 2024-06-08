@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     numbers_list.dart
+ * File Function: 数字列表
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:storylingokids/app/models/numbers_model.dart' show NumbersModel;
 
 List<NumbersModel> numbersList = [

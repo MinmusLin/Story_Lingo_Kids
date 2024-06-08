@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     image_card.dart
+ * File Function: 图片卡片
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:flutter/material.dart'
     show
         Align,

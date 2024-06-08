@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     colors_list.dart
+ * File Function: 颜色列表
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:storylingokids/app/models/colors_model.dart' show ColorsModel;
 
 List<ColorsModel> colorsList = [

@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     colors_view.dart
+ * File Function: 颜色页面
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:flutter/material.dart'
     show
         BouncingScrollPhysics,
@@ -20,7 +29,7 @@ import 'package:flutter/material.dart'
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 import 'package:storylingokids/app/lists/colors_list.dart' show colorsList;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
-import 'package:storylingokids/app/widgets/tile_card.dart' show TileCard;
+import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
 
 class ColorsView extends StatefulWidget {
   final String title;
@@ -98,7 +107,7 @@ class _ColorsViewState extends State<ColorsView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: TileCard(
+                  child: TextCard(
                     title: colorsList[index].name,
                     textColor: colorsList[index].name == 'White'
                         ? const Color(0xFF303030)

@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     menu_card.dart
+ * File Function: 菜单卡片
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:flutter/cupertino.dart'
     show
         Alignment,
@@ -57,13 +66,13 @@ import 'package:flutter/painting.dart'
 import 'package:flutter/services.dart' show Color, HapticFeedback, Offset;
 import 'package:just_audio/just_audio.dart' show AudioPlayer;
 
-class CategoryCard extends StatefulWidget {
+class MenuCard extends StatefulWidget {
   final String title;
   final Color primaryColor;
   final Color secondaryColor;
   final Widget screen;
 
-  const CategoryCard({
+  const MenuCard({
     super.key,
     required this.title,
     required this.primaryColor,
@@ -72,10 +81,10 @@ class CategoryCard extends StatefulWidget {
   });
 
   @override
-  State<CategoryCard> createState() => _CategoryCardState();
+  State<MenuCard> createState() => _MenuCardState();
 }
 
-class _CategoryCardState extends State<CategoryCard> {
+class _MenuCardState extends State<MenuCard> {
   final _audioPlayer = AudioPlayer();
 
   @override

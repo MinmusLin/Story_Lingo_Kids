@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     home_view.dart
+ * File Function: 主页页面
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:flutter/material.dart'
     show
         Alignment,
@@ -18,7 +27,7 @@ import 'package:flutter/material.dart'
         Widget;
 import 'package:storylingokids/app/views/animals_view.dart' show AnimalsView;
 import 'package:storylingokids/app/views/birds_view.dart' show BirdsView;
-import 'package:storylingokids/app/widgets/category_card.dart' show CategoryCard;
+import 'package:storylingokids/app/widgets/menu_card.dart' show MenuCard;
 import 'package:storylingokids/app/views/alphabets_view.dart'
     show AlphabetsView;
 import 'package:storylingokids/app/views/colors_view.dart' show ColorsView;
@@ -32,7 +41,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> categories = [
-      CategoryCard(
+      MenuCard(
         title: 'Animals',
         primaryColor: Colors.pinkAccent[100]!,
         secondaryColor: Colors.pink,
@@ -42,7 +51,7 @@ class HomeView extends StatelessWidget {
           secondaryColor: Colors.pink,
         ),
       ),
-      CategoryCard(
+      MenuCard(
         title: 'Birds',
         primaryColor: Colors.purpleAccent[100]!,
         secondaryColor: Colors.purple,
@@ -52,7 +61,7 @@ class HomeView extends StatelessWidget {
           secondaryColor: Colors.purple,
         ),
       ),
-      CategoryCard(
+      MenuCard(
         title: 'Colors',
         primaryColor: Colors.orangeAccent[100]!,
         secondaryColor: Colors.orange,
@@ -62,7 +71,7 @@ class HomeView extends StatelessWidget {
           secondaryColor: Colors.orange,
         ),
       ),
-      CategoryCard(
+      MenuCard(
         title: '123',
         primaryColor: Colors.greenAccent[100]!,
         secondaryColor: Colors.green,
@@ -72,7 +81,7 @@ class HomeView extends StatelessWidget {
           secondaryColor: Colors.green,
         ),
       ),
-      CategoryCard(
+      MenuCard(
         title: 'ABC',
         primaryColor: Colors.cyanAccent[100]!,
         secondaryColor: Colors.cyan,
@@ -82,7 +91,7 @@ class HomeView extends StatelessWidget {
           secondaryColor: Colors.cyan,
         ),
       ),
-      CategoryCard(
+      MenuCard(
         title: 'Stories',
         primaryColor: Colors.blueAccent[100]!,
         secondaryColor: Colors.blue,
@@ -92,7 +101,7 @@ class HomeView extends StatelessWidget {
           secondaryColor: Colors.blue,
         ),
       ),
-      CategoryCard(
+      MenuCard(
         title: 'Shapes',
         primaryColor: Colors.redAccent[100]!,
         secondaryColor: Colors.red,

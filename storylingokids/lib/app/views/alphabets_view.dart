@@ -1,3 +1,12 @@
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     alphabets_view.dart
+ * File Function: 字母表页面
+ * Author:        林继申
+ * Update Date:   2024-06-08
+ * License:       MIT License
+ */
+
 import 'package:flutter/material.dart'
     show
         BouncingScrollPhysics,
@@ -21,7 +30,7 @@ import 'package:just_audio/just_audio.dart' show AudioPlayer;
 import 'package:storylingokids/app/lists/alphabets_list.dart'
     show alphabetsList;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
-import 'package:storylingokids/app/widgets/tile_card.dart' show TileCard;
+import 'package:storylingokids/app/widgets/text_card.dart' show TextCard;
 
 class AlphabetsView extends StatefulWidget {
   final String title;
@@ -99,7 +108,7 @@ class _AlphabetsViewState extends State<AlphabetsView> {
                   padding: index % 2 == 0
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: TileCard(
+                  child: TextCard(
                     title: alphabetsList[index].text,
                     textColor: getIndexColor(index),
                     onTap: () => _playAudio(alphabetsList[index].audio),
