@@ -3,19 +3,25 @@
  * File Name:     alphabets_test_view.dart
  * File Function: 字母表测试页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
+// ignore: depend_on_referenced_packages
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:flutter/material.dart'
     show
+        AlertDialog,
         BouncingScrollPhysics,
         BuildContext,
         Color,
         Colors,
         CustomScrollView,
         EdgeInsets,
+        FontWeight,
+        Navigator,
         Padding,
+        RichText,
         Scaffold,
         ScrollController,
         SliverChildBuilderDelegate,
@@ -24,7 +30,12 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
-        Widget;
+        Text,
+        TextButton,
+        TextSpan,
+        TextStyle,
+        Widget,
+        showDialog;
 import 'package:storylingokids/app/lists/alphabets_list.dart'
     show alphabetsList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
@@ -51,15 +62,23 @@ class AlphabetsTestView extends StatefulWidget {
 class _AlphabetsTestViewState extends State<AlphabetsTestView> {
   final _scrollController = ScrollController();
   double offset = 0;
+  late stt.SpeechToText _speech;
+  String _speechText = '';
+  late String _currentTitle;
 
   @override
   void initState() {
     super.initState();
+    _speech = stt.SpeechToText();
     _scrollController.addListener(onScroll);
   }
 
   @override
   void dispose() {
+    if (_speech.isListening) {
+      _speech.stop();
+    }
+    _speech.cancel();
     _scrollController.dispose();
     super.dispose();
   }
@@ -68,6 +87,94 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
     setState(() {
       offset = (_scrollController.hasClients) ? _scrollController.offset : 0;
     });
+  }
+
+  void _startListening(String title) async {
+    if (_speech.isListening) {
+      await _speech.stop();
+    }
+    _currentTitle = title;
+    _speech = stt.SpeechToText();
+    _speechText = '';
+    bool available = await _speech.initialize();
+    if (available) {
+      _speech.listen(
+        onResult: (result) {
+          setState(() {
+            _speechText = result.recognizedWords;
+          });
+        },
+        localeId: 'en_US',
+      );
+    }
+  }
+
+  void _stopListening() {
+    _speech.stop().then((_) {
+      setState(() {
+        _showDialog();
+      });
+    });
+  }
+
+  void _showDialog() {
+    bool isCorrect = _speechText.isNotEmpty &&
+        _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          isCorrect ? "🥳 Great Job!" : "😉 Try Again!",
+          style: const TextStyle(
+            fontFamily: 'CabinSketch',
+            fontSize: 32,
+            fontWeight: FontWeight.w700,
+            color: Colors.blue,
+          ),
+        ),
+        content: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: _speechText.isEmpty
+                    ? 'Louder, please!\n'
+                    : 'Your speech: $_speechText\n',
+                style: const TextStyle(
+                  fontFamily: 'CabinSketch',
+                  fontSize: 28,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+              ),
+              TextSpan(
+                text:
+                    isCorrect ? "That's perfect!" : "Let's try one more time!",
+                style: TextStyle(
+                  fontFamily: 'CabinSketch',
+                  fontSize: 28,
+                  fontWeight: FontWeight.w600,
+                  color: isCorrect ? Colors.green : Colors.red,
+                ),
+              )
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            child: const Text(
+              'OK',
+              style: TextStyle(
+                fontFamily: 'CabinSketch',
+                fontSize: 32,
+                fontWeight: FontWeight.w700,
+                color: Colors.blue,
+              ),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -99,7 +206,10 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
                       : const EdgeInsets.only(bottom: 20, right: 20),
                   child: TestTextCard(
                     title: alphabetsList[index].text,
-                    textColor: getIndexColor(index),
+                    textColor: Colors.primaries[index % Colors.primaries.length]
+                        .withOpacity(0.8),
+                    onPressed: () => _startListening(alphabetsList[index].text),
+                    onReleased: _stopListening,
                   ),
                 );
               },
@@ -109,8 +219,4 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
       ),
     );
   }
-}
-
-Color getIndexColor(int index, {double opacity = 0.8}) {
-  return Colors.primaries[index % Colors.primaries.length].withOpacity(opacity);
 }

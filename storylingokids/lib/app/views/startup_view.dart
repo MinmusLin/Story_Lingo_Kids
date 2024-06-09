@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen>
   void _introAudio() async {
     try {
       await _audioPlayer.setAsset('assets/audios/effects/Startup.mp3');
-      _audioPlayer.setVolume(2.0);
+      _audioPlayer.setVolume(1.0);
       _audioPlayer.play();
     } catch (e) {
       debugPrint('Error loading audio source: $e');
