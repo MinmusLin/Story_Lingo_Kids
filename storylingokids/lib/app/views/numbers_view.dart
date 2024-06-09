@@ -123,7 +123,7 @@ class _NumbersViewState extends State<NumbersView> {
                       ? const EdgeInsets.only(bottom: 20, left: 20)
                       : const EdgeInsets.only(bottom: 20, right: 20),
                   child: TextCard(
-                    title: numbersList[index].text,
+                    title: numbersList[index].number,
                     textColor: Colors.primaries[index % Colors.primaries.length]
                         .withOpacity(0.8),
                     onTap: () => _playAudio(numbersList[index].audio),

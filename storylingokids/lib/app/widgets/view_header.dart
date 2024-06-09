@@ -52,6 +52,7 @@ class ViewHeader extends StatefulWidget {
   final double offset;
   final VoidCallback? onTap;
   final VoidCallback? onTest;
+  final bool showMicrophoneIcon;
 
   const ViewHeader({
     super.key,
@@ -61,6 +62,7 @@ class ViewHeader extends StatefulWidget {
     required this.offset,
     this.onTap,
     this.onTest,
+    this.showMicrophoneIcon = true,
   });
 
   @override
@@ -137,22 +139,24 @@ class _ViewHeaderState extends State<ViewHeader> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    _testAudio();
-                    if (widget.onTest != null) {
-                      widget.onTest!();
-                    }
-                  },
-                  child: const Text(
-                    '🎙️',
-                    style: TextStyle(
-                      fontSize: 42,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
+                if (widget.showMicrophoneIcon)
+                  GestureDetector(
+                    onTap: () {
+                      _testAudio();
+                      HapticFeedback.lightImpact();
+                      if (widget.onTest != null) {
+                        widget.onTest!();
+                      }
+                    },
+                    child: const Text(
+                      '🎙️',
+                      style: TextStyle(
+                        fontSize: 42,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
             Expanded(

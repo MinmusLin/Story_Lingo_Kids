@@ -3,7 +3,7 @@
  * File Name:     stories_view.dart
  * File Function: 故事页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -29,7 +29,7 @@ import 'package:flutter/material.dart'
         Widget;
 import 'package:flutter/painting.dart'
     show Alignment, Color, EdgeInsets, TextStyle;
-import 'package:storylingokids/app/widgets/test_view_header.dart' show TestViewHeader;
+import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
 class StoriesView extends StatefulWidget {
   final String title;
@@ -77,11 +77,12 @@ class _StoriesViewState extends State<StoriesView> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
-            child: TestViewHeader(
+            child: ViewHeader(
               title: widget.title,
               primaryColor: widget.primaryColor,
               secondaryColor: widget.secondaryColor,
               offset: offset,
+              showMicrophoneIcon: false,
             ),
           ),
           SliverGrid(
