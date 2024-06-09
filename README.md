@@ -39,9 +39,6 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
   * `/assets`
   项目资源文件
 
-  * `/ios`
-  iOS 平台特定的代码和配置文件
-
   * `/lib`
   项目 Dart 代码文件
 
