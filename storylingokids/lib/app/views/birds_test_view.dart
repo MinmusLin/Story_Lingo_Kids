@@ -3,11 +3,11 @@
  * File Name:     birds_test_view.dart
  * File Function: 鸟测试页面
  * Author:        林继申
- * Update Date:   2024-06-09
+ * Update Date:   2024-06-10
  * License:       MIT License
  */
 
-// ignore: depend_on_referenced_packages
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:flutter/material.dart'
     show
@@ -70,6 +70,7 @@ class _BirdsTestViewState extends State<BirdsTestView> {
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
+    _speech.initialize();
     _scrollController.addListener(onScroll);
   }
 
@@ -90,23 +91,22 @@ class _BirdsTestViewState extends State<BirdsTestView> {
   }
 
   void _startListening(String title) async {
-    if (_speech.isListening) {
-      await _speech.stop();
-    }
     _currentTitle = title;
-    _speech = stt.SpeechToText();
     _speechText = '';
-    bool available = await _speech.initialize();
-    if (available) {
-      _speech.listen(
-        onResult: (result) {
-          setState(() {
-            _speechText = result.recognizedWords;
-          });
-        },
-        localeId: 'en_US',
-      );
+    if (_speech.isListening) {
+      await _speech.cancel();
     }
+    _speech.listen(
+      onResult: (result) {
+        setState(() {
+          _speechText = result.recognizedWords;
+          if (kDebugMode) {
+            print('Recognition results: $_speechText');
+          }
+        });
+      },
+      localeId: 'en_US',
+    );
   }
 
   void _stopListening() {
