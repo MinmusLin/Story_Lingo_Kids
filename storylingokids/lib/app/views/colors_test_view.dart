@@ -36,6 +36,7 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget,
         showDialog;
+import 'package:storylingokids/app/debug_mode.dart' show DebugMode;
 import 'package:storylingokids/app/lists/colors_list.dart' show colorsList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
@@ -117,8 +118,14 @@ class _ColorsTestViewState extends State<ColorsTestView> {
   }
 
   void _showDialog() {
-    bool isCorrect = _speechText.isNotEmpty &&
-        _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    bool isCorrect = false;
+    if (DebugMode.isDebugMode) {
+      isCorrect = true;
+      _speechText = _currentTitle.toLowerCase();
+    } else {
+      isCorrect = _speechText.isNotEmpty &&
+          _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    }
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

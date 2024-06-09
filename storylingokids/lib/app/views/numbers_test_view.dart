@@ -36,6 +36,7 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget,
         showDialog;
+import 'package:storylingokids/app/debug_mode.dart' show DebugMode;
 import 'package:storylingokids/app/lists/numbers_list.dart' show numbersList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
     show TestViewHeader;
@@ -117,8 +118,14 @@ class _NumbersTestViewState extends State<NumbersTestView> {
   }
 
   void _showDialog() {
-    bool isCorrect = _speechText.isNotEmpty &&
-        _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    bool isCorrect = false;
+    if (DebugMode.isDebugMode) {
+      isCorrect = true;
+      _speechText = _currentTitle.toLowerCase();
+    } else {
+      isCorrect = _speechText.isNotEmpty &&
+          _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    }
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

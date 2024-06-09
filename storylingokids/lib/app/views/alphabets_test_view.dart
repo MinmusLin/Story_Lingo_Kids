@@ -36,6 +36,7 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget,
         showDialog;
+import 'package:storylingokids/app/debug_mode.dart' show DebugMode;
 import 'package:storylingokids/app/lists/alphabets_list.dart'
     show alphabetsList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'
@@ -118,8 +119,14 @@ class _AlphabetsTestViewState extends State<AlphabetsTestView> {
   }
 
   void _showDialog() {
-    bool isCorrect = _speechText.isNotEmpty &&
-        _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    bool isCorrect = false;
+    if (DebugMode.isDebugMode) {
+      isCorrect = true;
+      _speechText = _currentTitle.toLowerCase();
+    } else {
+      isCorrect = _speechText.isNotEmpty &&
+          _speechText.toLowerCase() == _currentTitle.toLowerCase();
+    }
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
