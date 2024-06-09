@@ -10,13 +10,12 @@ dependencies:
     sdk: flutter
   just_audio: ^0.9.38
   google_fonts: ^6.2.1
-  cupertino_icons: ^1.0.6
+  speech_to_text: ^6.6.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  speech_to_text: ^6.6.2
 
 flutter:
   uses-material-design: true
