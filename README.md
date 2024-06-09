@@ -10,6 +10,8 @@ StoryLingoKids: Educational fun, AI-enabled interaction, leading the early child
 
 StoryLingoKids：寓教于乐、AI智能交互、引领幼儿英语启蒙教育体验。
 
+![](assets/Logo.png)
+
 > ***Relevant course***
 > * Human Computer Interface 2024 (2024年同济大学用户交互技术)
 
