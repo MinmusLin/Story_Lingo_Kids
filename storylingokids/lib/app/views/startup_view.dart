@@ -3,7 +3,7 @@
  * File Name:     startup_view.dart
  * File Function: 启动页面
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-09
  * License:       MIT License
  */
 
@@ -155,12 +155,12 @@ class _SplashScreenState extends State<SplashScreen>
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFBAFCF4).withOpacity(.2),
+                      color: const Color(0xFFBEEBE0).withOpacity(.2),
                       blurRadius: 100,
                       spreadRadius: 10,
                     ),
                   ],
-                  color: const Color(0xFFBAFCF4),
+                  color: const Color(0xFFBEEBE0),
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Center(
@@ -172,7 +172,7 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                     child: Stack(
                       children: [
-                        Image.asset('assets/images/Icon.png'),
+                        Image.asset('assets/Icon.png'),
                         AnimatedBuilder(
                           animation: scaleAnimation,
                           builder: (c, child) => Transform.scale(
@@ -180,7 +180,7 @@ class _SplashScreenState extends State<SplashScreen>
                             child: Container(
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Color(0xFFBAFCF4),
+                                color: Color(0xFFBEEBE0),
                               ),
                             ),
                           ),

@@ -39,8 +39,8 @@ flutter:
     - assets/audios/effects/
     - assets/audios/numbers/
     - assets/audios/shapes/
-    - assets/images/
     - assets/images/animals/
     - assets/images/background/
     - assets/images/birds/
     - assets/images/shapes/
+    - assets/
