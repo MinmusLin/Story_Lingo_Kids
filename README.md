@@ -30,6 +30,9 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 
 ## 项目组成
 
+* `/assets`
+存放 `README.md` 文件所需的相关图片资源
+
 * `/storylingokids`
 项目源代码
 
@@ -69,4 +72,4 @@ Email: minmuslin@outlook.com
 
 ## 文档更新日期
 
-2024年6月9日
+2024年6月10日
