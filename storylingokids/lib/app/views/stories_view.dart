@@ -8,27 +8,9 @@
  */
 
 import 'package:flutter/material.dart'
-    show
-        Alignment,
-        BouncingScrollPhysics,
-        BuildContext,
-        Color,
-        Container,
-        CustomScrollView,
-        EdgeInsets,
-        Padding,
-        Scaffold,
-        ScrollController,
-        SliverChildBuilderDelegate,
-        SliverGrid,
-        SliverGridDelegateWithFixedCrossAxisCount,
-        SliverToBoxAdapter,
-        State,
-        StatefulWidget,
-        Text,
-        Widget;
-import 'package:flutter/painting.dart'
-    show Alignment, Color, EdgeInsets, TextStyle;
+    show Alignment, AppBar, AssetImage, BorderRadius, BouncingScrollPhysics, BoxDecoration, BoxFit, BuildContext, Center, Color, Container, CustomScrollView, DecorationImage, EdgeInsets, GestureDetector, MaterialPageRoute, Navigator, Padding, Scaffold, ScrollController, SliverChildBuilderDelegate, SliverGrid, SliverGridDelegateWithFixedCrossAxisCount, SliverToBoxAdapter, State, StatefulWidget, StatelessWidget, Text, Widget;
+import 'package:storylingokids/app/views/abc_view.dart';
+import 'package:storylingokids/app/views/count_view.dart';
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
 class StoriesView extends StatefulWidget {
@@ -69,6 +51,24 @@ class _StoriesViewState extends State<StoriesView> {
     });
   }
 
+  void _navigateToPageOne() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Pageabc(title: 'ABC'),
+      ),
+    );
+  }
+
+  void _navigateToPageTwo() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Pagecount(title: 'Let\'s count!'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,23 +87,33 @@ class _StoriesViewState extends State<StoriesView> {
           ),
           SliverGrid(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
+              crossAxisCount: 2,
               crossAxisSpacing: 20.0,
+              mainAxisSpacing: 20.0,
             ),
             delegate: SliverChildBuilderDelegate(
-              childCount: 1,
-              (context, index) {
+              childCount: 2,
+                  (context, index) {
                 return Padding(
-                  padding: index % 2 == 0
-                      ? const EdgeInsets.only(bottom: 20, left: 20)
-                      : const EdgeInsets.only(bottom: 20, right: 20),
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'Coming soon...',
-                      style: TextStyle(
-                        color: Color(0xFF959595),
-                        fontSize: 24,
+                  padding: const EdgeInsets.all(20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      if (index == 0) {
+                        _navigateToPageOne();
+                      } else {
+                        _navigateToPageTwo();
+                      }
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/images/stories/cover$index.png'
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
@@ -116,3 +126,5 @@ class _StoriesViewState extends State<StoriesView> {
     );
   }
 }
+
+
