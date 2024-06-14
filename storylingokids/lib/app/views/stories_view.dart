@@ -2,15 +2,40 @@
  * Project Name:  StoryLingoKids
  * File Name:     stories_view.dart
  * File Function: 故事页面
- * Author:        林继申
- * Update Date:   2024-06-09
+ * Author:        林继申、王麒懿
+ * Update Date:   2024-06-15
  * License:       MIT License
  */
 
 import 'package:flutter/material.dart'
-    show Alignment, AppBar, AssetImage, BorderRadius, BouncingScrollPhysics, BoxDecoration, BoxFit, BuildContext, Center, Color, Container, CustomScrollView, DecorationImage, EdgeInsets, GestureDetector, MaterialPageRoute, Navigator, Padding, Scaffold, ScrollController, SliverChildBuilderDelegate, SliverGrid, SliverGridDelegateWithFixedCrossAxisCount, SliverToBoxAdapter, State, StatefulWidget, StatelessWidget, Text, Widget;
-import 'package:storylingokids/app/views/abc_view.dart';
-import 'package:storylingokids/app/views/count_view.dart';
+    show
+        Alignment,
+        AssetImage,
+        BorderRadius,
+        BouncingScrollPhysics,
+        BoxDecoration,
+        BoxFit,
+        BuildContext,
+        Color,
+        Container,
+        CustomScrollView,
+        DecorationImage,
+        EdgeInsets,
+        GestureDetector,
+        MaterialPageRoute,
+        Navigator,
+        Padding,
+        Scaffold,
+        ScrollController,
+        SliverChildBuilderDelegate,
+        SliverGrid,
+        SliverGridDelegateWithFixedCrossAxisCount,
+        SliverToBoxAdapter,
+        State,
+        StatefulWidget,
+        Widget;
+import 'package:storylingokids/app/views/abc_view.dart' show PageABC;
+import 'package:storylingokids/app/views/count_view.dart' show PageCount;
 import 'package:storylingokids/app/widgets/view_header.dart' show ViewHeader;
 
 class StoriesView extends StatefulWidget {
@@ -55,7 +80,7 @@ class _StoriesViewState extends State<StoriesView> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const Pageabc(title: 'ABC'),
+        builder: (context) => const PageABC(title: 'ABC'),
       ),
     );
   }
@@ -64,7 +89,7 @@ class _StoriesViewState extends State<StoriesView> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const Pagecount(title: 'Let\'s count!'),
+        builder: (context) => const PageCount(title: 'Let\'s count!'),
       ),
     );
   }
@@ -93,7 +118,7 @@ class _StoriesViewState extends State<StoriesView> {
             ),
             delegate: SliverChildBuilderDelegate(
               childCount: 2,
-                  (context, index) {
+              (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: GestureDetector(
@@ -109,8 +134,7 @@ class _StoriesViewState extends State<StoriesView> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                            'assets/images/stories/cover$index.png'
-                          ),
+                              'assets/images/stories/cover_$index.png'),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(20),
@@ -126,5 +150,3 @@ class _StoriesViewState extends State<StoriesView> {
     );
   }
 }
-
-

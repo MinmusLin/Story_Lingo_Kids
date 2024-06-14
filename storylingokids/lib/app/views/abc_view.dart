@@ -1,17 +1,57 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:just_audio/just_audio.dart';
+/*
+ * Project Name:  StoryLingoKids
+ * File Name:     abc_view.dart
+ * File Function: ABC 故事页面
+ * Author:        林继申、王麒懿
+ * Update Date:   2024-06-15
+ * License:       MIT License
+ */
 
-class Pageabc extends StatefulWidget {
+import 'package:flutter/material.dart'
+    show
+        Alignment,
+        AnimatedSwitcher,
+        AnimatedWidget,
+        Animation,
+        AnimationStatus,
+        AxisDirection,
+        BoxFit,
+        BuildContext,
+        Center,
+        Colors,
+        Container,
+        EdgeInsets,
+        FractionalTranslation,
+        GestureDetector,
+        Icon,
+        IconButton,
+        Icons,
+        Image,
+        Navigator,
+        Offset,
+        Positioned,
+        Scaffold,
+        Stack,
+        State,
+        StatefulWidget,
+        Tween,
+        ValueKey,
+        Widget,
+        debugPrint;
+import 'package:flutter/services.dart'
+    show DeviceOrientation, Offset, SystemChrome;
+import 'package:just_audio/just_audio.dart' show AudioPlayer, LoopMode;
+
+class PageABC extends StatefulWidget {
   final String title;
 
-  const Pageabc({super.key, required this.title});
+  const PageABC({super.key, required this.title});
 
   @override
-  _PageabcState createState() => _PageabcState();
+  _PageABCState createState() => _PageABCState();
 }
 
-class _PageabcState extends State<Pageabc> {
+class _PageABCState extends State<PageABC> {
   final _audioPlayer = AudioPlayer();
   final _backgroundMusicPlayer = AudioPlayer();
   final _imageUrls = [
@@ -57,7 +97,8 @@ class _PageabcState extends State<Pageabc> {
 
   void _playBackgroundMusic() async {
     try {
-      await _backgroundMusicPlayer.setAsset('assets/audios/stories/background.mp3');
+      await _backgroundMusicPlayer
+          .setAsset('assets/audios/stories/background.mp3');
       _backgroundMusicPlayer.setLoopMode(LoopMode.one);
       _backgroundMusicPlayer.play();
     } catch (e) {
@@ -99,13 +140,12 @@ class _PageabcState extends State<Pageabc> {
         children: [
           Center(
             child: AnimatedSwitcher(
-              duration: Duration(milliseconds: 700),
+              duration: const Duration(milliseconds: 700),
               transitionBuilder: (Widget child, Animation<double> animation) {
-                var tween=Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0));
                 return SlideTransitionX(
-                  child: child,
                   direction: AxisDirection.left,
                   position: animation,
+                  child: child,
                 );
               },
               child: Image.asset(
@@ -141,12 +181,12 @@ class _PageabcState extends State<Pageabc> {
 
 class SlideTransitionX extends AnimatedWidget {
   SlideTransitionX({
-    Key? key,
+    super.key,
     required Animation<double> position,
     this.transformHitTests = true,
     this.direction = AxisDirection.down,
     required this.child,
-  }) : super(key: key, listenable: position) {
+  }) : super(listenable: position) {
     switch (direction) {
       case AxisDirection.up:
         _tween = Tween(begin: const Offset(0, 1), end: const Offset(0, 0));
@@ -164,11 +204,8 @@ class SlideTransitionX extends AnimatedWidget {
   }
 
   final bool transformHitTests;
-
   final Widget child;
-
   final AxisDirection direction;
-
   late final Tween<Offset> _tween;
 
   @override
