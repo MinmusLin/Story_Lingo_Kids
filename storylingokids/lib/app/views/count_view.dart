@@ -39,7 +39,7 @@ import 'package:flutter/material.dart'
         Widget,
         debugPrint;
 import 'package:flutter/services.dart'
-    show DeviceOrientation, Offset, SystemChrome;
+    show DeviceOrientation, HapticFeedback, Offset, SystemChrome;
 import 'package:just_audio/just_audio.dart' show AudioPlayer, LoopMode;
 
 class PageCount extends StatefulWidget {
@@ -55,13 +55,13 @@ class _PageCountState extends State<PageCount> {
   final _audioPlayer = AudioPlayer();
   final _backgroundMusicPlayer = AudioPlayer();
   final _imageUrls = [
-    'assets/images/stories/count/start.png',
-    'assets/images/stories/count/page_1.png',
-    'assets/images/stories/count/page_2.png',
-    'assets/images/stories/count/page_3.png',
-    'assets/images/stories/count/page_4.png',
-    'assets/images/stories/count/page_5.png',
-    'assets/images/stories/count/end.png',
+    'assets/images/stories/count/Start.png',
+    'assets/images/stories/count/Page_1.png',
+    'assets/images/stories/count/Page_2.png',
+    'assets/images/stories/count/Page_3.png',
+    'assets/images/stories/count/Page_4.png',
+    'assets/images/stories/count/Page_5.png',
+    'assets/images/stories/count/End.png',
   ];
   int _currentIndex = 0;
 
@@ -97,11 +97,11 @@ class _PageCountState extends State<PageCount> {
   void _playBackgroundMusic() async {
     try {
       await _backgroundMusicPlayer
-          .setAsset('assets/audios/stories/background.mp3');
+          .setAsset('assets/audios/stories/Background.mp3');
       _backgroundMusicPlayer.setLoopMode(LoopMode.one);
       _backgroundMusicPlayer.play();
     } catch (e) {
-      debugPrint('Error loading background music: $e');
+      debugPrint('Error loading audio source: $e');
     }
   }
 
@@ -110,11 +110,12 @@ class _PageCountState extends State<PageCount> {
       await _audioPlayer.setAsset(audioPath);
       _audioPlayer.play();
     } catch (e) {
-      debugPrint('Error loading audio: $e');
+      debugPrint('Error loading audio source: $e');
     }
   }
 
   void _onImageTap() {
+    HapticFeedback.lightImpact();
     if (_currentIndex == 0) {
       setState(() {
         _currentIndex = (_currentIndex + 1) % _imageUrls.length;
@@ -127,7 +128,7 @@ class _PageCountState extends State<PageCount> {
         _currentIndex = (_currentIndex + 1) % _imageUrls.length;
       });
     } else {
-      final audioPath = 'assets/audios/stories/count/audio2.$_currentIndex.mp3';
+      final audioPath = 'assets/audios/stories/count/Audio_$_currentIndex.mp3';
       _playAudio(audioPath);
     }
   }
@@ -168,6 +169,7 @@ class _PageCountState extends State<PageCount> {
             child: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () {
+                HapticFeedback.lightImpact();
                 Navigator.pop(context);
               },
             ),

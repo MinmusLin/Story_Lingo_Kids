@@ -120,7 +120,9 @@ class _StoriesViewState extends State<StoriesView> {
               childCount: 2,
               (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: index % 2 == 0
+                      ? const EdgeInsets.only(bottom: 20, left: 20)
+                      : const EdgeInsets.only(bottom: 20, right: 20),
                   child: GestureDetector(
                     onTap: () {
                       if (index == 0) {
@@ -134,7 +136,7 @@ class _StoriesViewState extends State<StoriesView> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/stories/cover_$index.png'),
+                              'assets/images/stories/cover/Cover_$index.png'),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(20),
