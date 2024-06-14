@@ -3,7 +3,7 @@
  * File Name:     main.dart
  * File Function: 应用程序入口
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-15
  * License:       MIT License
  */
 
@@ -29,7 +29,6 @@ void main() {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then(
     (_) => runApp(const MyApp()),
   );
-  //runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
