@@ -11,11 +11,12 @@ dependencies:
   just_audio: ^0.9.38
   google_fonts: ^6.2.1
   speech_to_text: ^6.6.2
+  bookfx: ^0.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
@@ -44,3 +45,9 @@ flutter:
     - assets/images/birds/
     - assets/images/shapes/
     - assets/
+    - assets/images/stories/
+    - assets/images/stories/ABC/
+    - assets/images/stories/count/
+    - assets/audios/stories/
+    - assets/audios/stories/ABC/
+    - assets/audios/stories/count/
