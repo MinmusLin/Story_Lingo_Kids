@@ -11,7 +11,6 @@ dependencies:
   just_audio: ^0.9.38
   google_fonts: ^6.2.1
   speech_to_text: ^6.6.2
-  bookfx: ^0.0.2
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +32,7 @@ flutter:
       fonts:
         - asset: assets/fonts/CharuChandan3D-Regular.ttf
   assets:
+    - assets/
     - assets/audios/alphabets/
     - assets/audios/animals/
     - assets/audios/birds/
@@ -40,14 +40,12 @@ flutter:
     - assets/audios/effects/
     - assets/audios/numbers/
     - assets/audios/shapes/
+    - assets/audios/stories/
+    - assets/audios/stories/abc/
+    - assets/audios/stories/count/
     - assets/images/animals/
     - assets/images/background/
     - assets/images/birds/
     - assets/images/shapes/
-    - assets/
-    - assets/images/stories/
-    - assets/images/stories/ABC/
+    - assets/images/stories/abc/
     - assets/images/stories/count/
-    - assets/audios/stories/
-    - assets/audios/stories/ABC/
-    - assets/audios/stories/count/
