@@ -3,7 +3,7 @@
  * File Name:     birds_list.dart
  * File Function: 鸟列表
  * Author:        林继申
- * Update Date:   2024-06-08
+ * Update Date:   2024-06-15
  * License:       MIT License
  */
 
@@ -24,7 +24,7 @@ List<AnimalsAndBirdsModel> birdsList = [
     voice: 'assets/audios/birds/Bird_V2.mp3',
   ),
   AnimalsAndBirdsModel(
-    name: 'Pigeon',
+    name: 'Beagle',
     image: 'assets/images/birds/Bird_3.png',
     audio: 'assets/audios/birds/Bird_S3.mp3',
     voice: 'assets/audios/birds/Bird_V3.mp3',
