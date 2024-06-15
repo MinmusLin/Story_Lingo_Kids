@@ -158,7 +158,7 @@ class _StoriesViewState extends State<StoriesView> {
                 '\nMore stories are coming soon...',
                 style: TextStyle(
                   fontFamily: 'CabinSketch',
-                  fontSize: 30,
+                  fontSize: 20,
                   color: Colors.grey,
                   fontWeight: FontWeight.w700,
                 ),
