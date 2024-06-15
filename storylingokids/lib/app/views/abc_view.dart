@@ -43,9 +43,7 @@ import 'package:flutter/services.dart'
 import 'package:just_audio/just_audio.dart' show AudioPlayer, LoopMode;
 
 class PageABC extends StatefulWidget {
-  final String title;
-
-  const PageABC({super.key, required this.title});
+  const PageABC({super.key});
 
   @override
   _PageABCState createState() => _PageABCState();

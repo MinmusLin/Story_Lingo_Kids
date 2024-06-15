@@ -16,11 +16,14 @@ import 'package:flutter/material.dart'
         BoxDecoration,
         BoxFit,
         BuildContext,
+        Center,
         Color,
+        Colors,
         Container,
         CustomScrollView,
         DecorationImage,
         EdgeInsets,
+        FontWeight,
         GestureDetector,
         MaterialPageRoute,
         Navigator,
@@ -33,6 +36,8 @@ import 'package:flutter/material.dart'
         SliverToBoxAdapter,
         State,
         StatefulWidget,
+        Text,
+        TextStyle,
         Widget;
 import 'package:storylingokids/app/views/abc_view.dart' show PageABC;
 import 'package:storylingokids/app/views/count_view.dart' show PageCount;
@@ -76,20 +81,20 @@ class _StoriesViewState extends State<StoriesView> {
     });
   }
 
-  void _navigateToPageOne() {
+  void _navigateToPageABC() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const PageABC(title: 'ABC'),
+        builder: (context) => const PageABC(),
       ),
     );
   }
 
-  void _navigateToPageTwo() {
+  void _navigateToPageCount() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const PageCount(title: 'Let\'s count!'),
+        builder: (context) => const PageCount(),
       ),
     );
   }
@@ -126,9 +131,9 @@ class _StoriesViewState extends State<StoriesView> {
                   child: GestureDetector(
                     onTap: () {
                       if (index == 0) {
-                        _navigateToPageOne();
+                        _navigateToPageABC();
                       } else {
-                        _navigateToPageTwo();
+                        _navigateToPageCount();
                       }
                     },
                     child: Container(
@@ -145,6 +150,19 @@ class _StoriesViewState extends State<StoriesView> {
                   ),
                 );
               },
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: Center(
+              child: Text(
+                '\nMore stories is coming soon...',
+                style: TextStyle(
+                  fontFamily: 'CabinSketch',
+                  fontSize: 30,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
         ],

@@ -43,9 +43,7 @@ import 'package:flutter/services.dart'
 import 'package:just_audio/just_audio.dart' show AudioPlayer, LoopMode;
 
 class PageCount extends StatefulWidget {
-  final String title;
-
-  const PageCount({super.key, required this.title});
+  const PageCount({super.key});
 
   @override
   _PageCountState createState() => _PageCountState();
