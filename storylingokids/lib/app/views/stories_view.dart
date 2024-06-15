@@ -155,7 +155,7 @@ class _StoriesViewState extends State<StoriesView> {
           const SliverToBoxAdapter(
             child: Center(
               child: Text(
-                '\nMore stories is coming soon...',
+                '\nMore stories are coming soon...',
                 style: TextStyle(
                   fontFamily: 'CabinSketch',
                   fontSize: 30,

@@ -3,7 +3,7 @@
  * File Name:     alphabets_test_view.dart
  * File Function: 字母表测试页面
  * Author:        林继申
- * Update Date:   2024-06-10
+ * Update Date:   2024-06-15
  * License:       MIT License
  */
 
@@ -36,7 +36,7 @@ import 'package:flutter/material.dart'
         TextStyle,
         Widget,
         showDialog;
-import 'package:storylingokids/app/debug_mode.dart' show DebugMode;
+import 'package:storylingokids/main.dart' show DebugMode;
 import 'package:storylingokids/app/lists/alphabets_list.dart'
     show alphabetsList;
 import 'package:storylingokids/app/widgets/test_view_header.dart'

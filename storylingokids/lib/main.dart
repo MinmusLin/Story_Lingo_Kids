@@ -50,3 +50,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class DebugMode {
+  static bool isDebugMode = true;
+}
