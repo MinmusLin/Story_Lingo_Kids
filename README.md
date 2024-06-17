@@ -8,7 +8,7 @@ Story_Lingo_Kids
 
 StoryLingoKids: Educational fun, AI-enabled interaction, leading the early childhood English learning experience.
 
-StoryLingoKids：寓教于乐、AI智能交互、引领幼儿英语启蒙教育体验。
+StoryLingoKids：寓教于乐、AI 智能交互、引领幼儿英语启蒙教育体验。
 
 ![](assets/Logo.png)
 
