@@ -19,10 +19,10 @@ StoryLingoKids：寓教于乐、AI智能交互、引领幼儿英语启蒙教育�
 
 | 姓名 | 学号 | 分工 | 工作量 |
 | :---: | :---: | :---: | :---: |
-| 林继申 | 2250758 |  | 25% |
-| 王麒懿 | 2252090 |  | 25% |
-| 李沅衡 | 2253551 |  | 25% |
-| 张泰宇 | 2056174 |  | 25% |
+| 林继申 | 2250758 | 项目框架搭建、技术开发、项目 PPT 制作、艺术设计 | 25% |
+| 王麒懿 | 2252090 | 技术开发、艺术设计 | 25% |
+| 李沅衡 | 2253551 | 项目文档撰写、艺术设计 | 25% |
+| 张泰宇 | 2056174 | 项目文档撰写、艺术设计 | 25% |
 
 ```
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
@@ -31,7 +31,7 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 ## 项目组成
 
 * `/assets`
-存放 `README.md` 文件所需的相关图片资源
+存放 `README.md` 和 `StoryLingoKids_Documentation.md` 文件所需的相关图片资源
 
 * `/storylingokids`
 项目源代码
@@ -63,8 +63,14 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
   * `storylingokids.iml`
   项目结构配置文件
 
+* `Final_Defense.pptx`
+结题答辩
+
 * `Opening_Defense.pptx`
 开题答辩
+
+* `StoryLingoKids_Documentation.md`
+StoryLingoKids 项目文档
 
 ## 免责声明
 
