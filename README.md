@@ -19,10 +19,10 @@ StoryLingoKids：寓教于乐、AI智能交互、引领幼儿英语启蒙教育�
 
 | 姓名 | 学号 | 分工 | 工作量 |
 | :---: | :---: | :---: | :---: |
-| 林继申 | 2250758 | 项目框架搭建、技术开发、项目 PPT 制作、艺术设计 | 25% |
+| 林继申 | 2250758 | 框架搭建、技术开发、幻灯片制作、艺术设计 | 25% |
 | 王麒懿 | 2252090 | 技术开发、艺术设计 | 25% |
-| 李沅衡 | 2253551 | 项目文档撰写、艺术设计 | 25% |
-| 张泰宇 | 2056174 | 项目文档撰写、艺术设计 | 25% |
+| 李沅衡 | 2253551 | 文档撰写、艺术设计 | 25% |
+| 张泰宇 | 2056174 | 文档撰写、艺术设计 | 25% |
 
 ```
 git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
