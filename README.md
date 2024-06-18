@@ -33,6 +33,15 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 * `/assets`
 存放 `README.md` 和 `StoryLingoKids_Documentation.md` 文件所需的相关图片资源
 
+* `/demonstration`
+项目展示视频
+
+  * `Demonstration_1.mp4`
+  项目展示视频 1
+
+  * `Demonstration_1.mp4`
+  项目展示视频 2
+
 * `/storylingokids`
 项目源代码
 
