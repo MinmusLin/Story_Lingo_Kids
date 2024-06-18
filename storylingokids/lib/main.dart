@@ -52,5 +52,5 @@ class MyApp extends StatelessWidget {
 }
 
 class DebugMode {
-  static bool isDebugMode = true;
+  static bool isDebugMode = false;
 }
