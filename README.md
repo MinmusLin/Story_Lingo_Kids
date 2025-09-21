@@ -16,7 +16,7 @@ StoryLingoKids：寓教于乐、AI 智能交互、引领幼儿英语启蒙教育
 > ***Relevant course***
 > * Human Computer Interface 2024 (2024 年同济大学用户交互技术)
 
-## 项目组成
+## 仓库组成
 
 * [StoryLingoKids](storylingokids)
 项目源代码
